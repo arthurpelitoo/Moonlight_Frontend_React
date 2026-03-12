@@ -47,7 +47,7 @@ docs/documentacao.md
 ## 🚧 Status
 
 ⚠️ Projeto em desenvolvimento.
-Algumas funcionalidades ainda estão sendo implementadas.
+Algumas funcionalidades ainda vão ser implementadas.
 
 ## 📜 Scripts
 
