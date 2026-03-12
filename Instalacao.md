@@ -85,21 +85,6 @@ Adicione:
 @import "tailwindcss";
 ```
 
-⚠️ **Observação:**
-Na **versão 4**, o comando:
-
-```css
-@import "tailwindcss";
-```
-
-substitui as três diretivas usadas nas versões anteriores:
-
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-
 ---
 
 ✅ Com isso, o **Tailwind CSS estará corretamente configurado no projeto**.
