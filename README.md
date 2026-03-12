@@ -33,7 +33,7 @@ npm install
 npm run dev
 ```
 
-- O projeto estará disponível em:
+- O projeto estará rodando no:
 - http://localhost:5173
 
 ---
