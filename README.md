@@ -1,10 +1,58 @@
-# Moonlight_Frontend | No React
+# Projeto Moonlight(Frontend)
 
-Aqui está e será documentado todas as bibliotecas externas usadas neste projeto.
-Atualmente, estamos fazendo uso de um plugin e o proprio compilador react:
+Aplicação web desenvolvida em React com Vite para fazer um ecommerce de games.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+O projeto foi criado com foco em organização de código, componentização e boas práticas de front-end.
 
-## React Compiler
+## 🚀 Tecnologias
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- Axios
+
+## ⚙️ Como rodar o projeto
+
+### 1. Clonar o repositório
+
+```bash
+git clone https://github.com/seu-repositorio/projeto.git
+```
+
+### 2. Instalar dependências
+
+```bash
+npm install
+```
+
+### 3. Rodar o servidor de desenvolvimento
+
+```bash
+npm run dev
+```
+
+- O projeto estará disponível em:
+- http://localhost:5173
+
+---
+
+## 📘 Documentação
+
+A documentação detalhada do projeto pode ser encontrada em:
+
+docs/documentacao.md
+
+## 🚧 Status
+
+⚠️ Projeto em desenvolvimento.
+Algumas funcionalidades ainda estão sendo implementadas.
+
+## 📜 Scripts
+
+```bash
+npm run dev     # inicia o servidor de desenvolvimento
+npm run build   # gera build de produção
+npm run preview # visualiza build
+```
