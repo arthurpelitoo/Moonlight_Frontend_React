@@ -5,3 +5,18 @@
   text-align: center;
 } */
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body{
+  font-family: "Poppins", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+@theme {
+  --color-night: #000000;
+  --color-night-soft: #111827;
+  --color-surface-card: #1F2330;
+  --color-icon-branco: #FFFFFF;
+  --color-icon-branco-soft: #F2F4F8;
+}

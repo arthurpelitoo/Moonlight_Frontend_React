@@ -1,7 +1,7 @@
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
-import './css/App.css'
+import './styles/global.css'
 import './components/layout/Header/Header.tsx'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainPage from './views/Home/MainPage.tsx';

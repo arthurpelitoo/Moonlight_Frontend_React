@@ -1,4 +1,4 @@
-import "../../css/components/AllPagesUsage/Sidebar.css";
+// import "../../css/components/AllPagesUsage/Sidebar.css";
 
 function Sidebar(){
     return(
