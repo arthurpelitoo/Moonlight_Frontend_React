@@ -1,5 +1,5 @@
 declare global {
-    type Game = {
+    interface Game {
         id_game: number;
         title: string;
         description: string;

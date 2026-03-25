@@ -1,5 +1,5 @@
 declare global {
-    type Category = {
+    interface Category {
         id_category: number;
         name: string;
         description: string;

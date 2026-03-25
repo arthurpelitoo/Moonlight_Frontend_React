@@ -13,10 +13,54 @@ body{
   font-style: normal;
 }
 
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+}
+
 @theme {
   --color-night: #000000;
   --color-night-soft: #111827;
   --color-surface-card: #1F2330;
   --color-icon-branco: #FFFFFF;
   --color-icon-branco-soft: #F2F4F8;
+}
+
+@layer utilities {
+  .fx-underline {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fx-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0%;
+    height: 2px;
+    background: white;
+    transition: all 0.3s ease;
+  }
+
+  .fx-underline:hover::after {
+    width: 100%;
+    left: 0;
+  }
 }

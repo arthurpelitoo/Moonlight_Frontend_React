@@ -18,6 +18,9 @@ Ele é responsável por:
 * Traduzir módulos
 * Empacotar a aplicação para produção
 
+Para usar o vite:
+npm create vite@latest
+
 ---
 
 # 📂 Organização do Projeto
