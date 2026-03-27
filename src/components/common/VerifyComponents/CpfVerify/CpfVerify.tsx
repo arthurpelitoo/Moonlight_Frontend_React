@@ -1,14 +1,13 @@
-import { isPasswordConfirmed } from "../../../utils/Validation/confirmPass";
+import { isValidCPF } from "../../../../utils/Validation/cpf";
 
-type ConfirmPassVerifyProps = {
-    password: string;
-    confirmPassword: string;
-    showError: boolean;
+type CpfVerifyProps = {
+    cpf: string;
+    showError: boolean
 }
  
-export function ConfirmPassVerify({ password, confirmPassword, showError }: ConfirmPassVerifyProps) {
-    const passed = isPasswordConfirmed(password, confirmPassword);
- 
+export function CpfVerify({ cpf, showError }: CpfVerifyProps) {
+    const passed = isValidCPF(cpf); 
+
     if (!showError) return null;
     return (
         <div className="flex flex-col gap-2 mt-1">
@@ -24,9 +23,9 @@ export function ConfirmPassVerify({ password, confirmPassword, showError }: Conf
             {/* feedback via texto pro usuario */}
             <div className="flex items-center justify-between">
                 <span className="text-xs" style={{ color: passed ? "#1D9E75" : "#EF4444" }}>
-                    {passed ? "" : "As senhas não coincidem"}
+                    {passed ? "" : "O cpf não é válido"}
                 </span>
             </div>
         </div>
-    );
+    ); 
 }

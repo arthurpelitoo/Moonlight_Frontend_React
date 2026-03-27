@@ -1,18 +1,18 @@
 import { AddressBookIcon, ArrowRightIcon, CheckIcon, EnvelopeIcon, EyeIcon, EyeSlashIcon, LockKeyIcon, UserIcon } from "@phosphor-icons/react";
 import { InputFieldForm } from "../InputFieldForm/InputFieldForm";
-import { PasswordStrength } from "../PasswordStrengthVerify/PasswordStrength";
+import { PasswordStrength } from "../VerifyComponents/PasswordStrengthVerify/PasswordStrength";
 import { useState } from "react";
 import { Button } from "../Button/Button";
-import { EmailVerify } from "../EmailVerify/EmailVerify";
+import { EmailVerify } from "../VerifyComponents/EmailVerify/EmailVerify";
 import { validateRegister } from "../../../utils/Validation/ValidateRegister";
-import { ConfirmPassVerify } from "../ConfirmPassVerify/ConfirmPassVerify";
-import { UsernameVerify } from "../UsernameVerify/UsernameVerify";
+import { ConfirmPassVerify } from "../VerifyComponents/ConfirmPassVerify/ConfirmPassVerify";
+import { UsernameVerify } from "../VerifyComponents/UsernameVerify/UsernameVerify";
 import { getUsernameVerifiedLevel } from "../../../utils/Validation/username";
 import { isValidEmail } from "../../../utils/Validation/email";
 import { getPasswordVerifiedLevel } from "../../../utils/Validation/password";
 import { isPasswordConfirmed } from "../../../utils/Validation/confirmPass";
 import { isValidCPF } from "../../../utils/Validation/cpf";
-import { CpfVerify } from "../CpfVerify/CpfVerify";
+import { CpfVerify } from "../VerifyComponents/CpfVerify/CpfVerify";
 import { registerUser } from "../../../services/auth.service";
 
 interface RegisterFormProps {

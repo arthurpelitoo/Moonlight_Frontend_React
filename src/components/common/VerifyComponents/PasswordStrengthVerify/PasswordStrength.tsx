@@ -1,5 +1,5 @@
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
-import { getPasswordVerifiedLevel, passwordRules } from "../../../utils/Validation/password";
+import { getPasswordVerifiedLevel, passwordRules } from "../../../../utils/Validation/password";
 
 type PasswordStrengthProps = {
     password: string;

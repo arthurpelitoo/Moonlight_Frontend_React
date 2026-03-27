@@ -1,34 +1,46 @@
-const mockCategories: Category[] = [
-  {
-    id_category: 1,
-    name: "RPG",
-    description: "Jogos de RPG ou com elementos presentes de Role Playing Games",
-    image: "https://picsum.photos/300/200"
-  },
-  {
-    id_category: 2,
-    name: "FPS",
-    description: "Jogos de tiro em primeira pessoa",
-    image: "https://picsum.photos/300/200"
-  },
-  {
-    id_category: 3,
-    name: "Corrida",
-    description: "Jogos com alta velocidade envolvida, aposte corrida e vença na linha de chegada",
-    image: "https://picsum.photos/300/200"
-  },
-  {
-    id_category: 4,
-    name: "Ação e Aventura",
-    description: "Jogos com muita pancaria envolvida, aposte corrida e vença na linha de chegada",
-    image: "https://picsum.photos/300/200"
-  }
-]
+import { sanitizeData } from "../utils/Sanitizer/sanitizer";
+import { api } from "./api";
+import { fetchCategoryByIdMock, fetchCategoryMock } from "./fakeServices/category.fakeservice";
 
-export async function fetchCategories(): Promise<Category[]> {
-  await new Promise(resolve => setTimeout(resolve, 500));
-    // só pra simular delay de rede, quando for a API real,
-    // faça o favor de retirar o setTimeout(funcao, tempo minimo até ativar em "ms")
-    // e crie uma pasta só para os mocks.
-  return mockCategories;
+export async function fetchCategory(): Promise<Category[]> {
+    if (import.meta.env.VITE_USE_MOCK === "true") {
+        return fetchCategoryMock();
+    }
+
+    const response = await api.get(`/category`);
+    return response.data;
+}
+
+export async function fetchCategoryById(id_category: number): Promise<Category | Error> {
+    if (import.meta.env.VITE_USE_MOCK === "true") {
+        return fetchCategoryByIdMock(id_category);
+    }
+
+    const response = await api.get(`/category/${id_category}`);
+    return response.data;
+}
+
+export async function searchCategories(name: string): Promise<Category | Error> {
+    const response = await api.get(`/category`, {
+        params: { name }
+    });
+
+    return response.data;
+}
+
+export async function createCategory(data: {name: string, description: string, image: string}) {
+    const cleanData = sanitizeData(data);
+    const response = await api.post("/categories", cleanData);
+    return response.data;
+}
+
+export async function updateCategory(id_category: number, data: {name: string, description: string, image: string}) {
+    const cleanData = sanitizeData(data);
+    const response = await api.put(`/categories/${id_category}`, cleanData);
+    return response.data;
+}
+
+export async function deleteCategory(id_category: number) {
+    const response = await api.delete(`/categories/${id_category}`);
+    return response.data;
 }

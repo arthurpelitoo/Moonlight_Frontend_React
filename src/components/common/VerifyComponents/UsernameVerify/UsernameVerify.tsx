@@ -1,4 +1,4 @@
-import { getUsernameVerifiedLevel } from "../../../utils/Validation/username";
+import { getUsernameVerifiedLevel } from "../../../../utils/Validation/username";
 
 type UsernameVerifyProps = {
     username: string;

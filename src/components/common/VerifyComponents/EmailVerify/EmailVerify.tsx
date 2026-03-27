@@ -1,4 +1,4 @@
-import { isValidEmail } from "../../../utils/Validation/email";
+import { isValidEmail } from "../../../../utils/Validation/email";
 
 type EmailVerifyProps = {
     email: string;

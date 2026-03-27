@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "../../common/Button/Button";
-import { fetchCategories } from "../../../services/category.service";
+import { fetchCategory } from "../../../services/category.service";
 import { CategoryCard } from "../../common/CategoryCard/CategoryCard";
 import logo from "../../../assets/Moonlight.png";
 import { CategoryCardSkeleton } from "../../common/CategoryCard/CategoryCardSkeleton";
@@ -17,7 +17,7 @@ export function Footer(){
 
     useEffect(() => {
         const start = Date.now();
-        fetchCategories().then(data => {
+        fetchCategory().then(data => {
             const gapElapsed = Date.now() - start;
             const minimumTime = 600;
             setTimeout(() => {

@@ -1,5 +1,5 @@
 import { sanitizeData } from "../utils/Sanitizer/sanitizer";
-import { apiFetch } from "./api";
+import { api } from "./api";
 import { loginUserMock, registerUserMock } from "./fakeServices/auth.fakeservice";
 
 export async function registerUser(data: {
@@ -11,13 +11,12 @@ export async function registerUser(data: {
 
     const cleanData = sanitizeData(data);
 
-    if(import.meta.env.VITE_USE_MOCK === "true"){
+    if (import.meta.env.VITE_USE_MOCK === "true") {
         return registerUserMock(cleanData);
     }
-    return apiFetch("/register", {
-        method: "POST",
-        body: JSON.stringify(cleanData),
-    });
+
+  const response = await api.post("/register", cleanData);
+  return response.data;
 }
 
 export async function loginUser(data: {
@@ -31,8 +30,6 @@ export async function loginUser(data: {
         return loginUserMock(cleanData);
     }
 
-    return apiFetch("/login", {
-        method: "POST",
-        body: JSON.stringify(cleanData),
-    });
+    const response = await api.post("/login", cleanData);
+    return response.data;
 }
