@@ -1,4 +1,9 @@
 declare global {
+    enum game_active_enum{
+        "Y",
+        "N"
+    }
+
     interface Game {
         id_game: number;
         title: string;
@@ -6,8 +11,9 @@ declare global {
         price: number;
         image: string;
         link: string;
-        launch_date: Date
-        active: boolean;
+        launch_date: Date;
+        active: game_active_enum;
+        stock_available: number;
     }
 }
 

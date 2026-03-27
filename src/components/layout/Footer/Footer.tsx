@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "../../common/Button/Button";
-import { fetchCategories } from "../../../services/categoryServices";
+import { fetchCategories } from "../../../services/category.service";
 import { CategoryCard } from "../../common/CategoryCard/CategoryCard";
 import logo from "../../../assets/Moonlight.png";
 import { CategoryCardSkeleton } from "../../common/CategoryCard/CategoryCardSkeleton";

@@ -1,16 +1,25 @@
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
-import { getStrengthLabelText, getStrengthLevel, passwordRules } from "../../../utils/Validation/PasswordStrength/PasswordStrength";
+import { getPasswordVerifiedLevel, passwordRules } from "../../../utils/Validation/password";
 
 type PasswordStrengthProps = {
     password: string;
+    showError: boolean
+}
+
+function getStrengthLabelText(level: number): { labelText: string; color: string } {
+    if (level === 0) return { labelText: "Insira uma senha", color: "#E24B4A" };
+    if (level <= 2) return { labelText: "Fraca", color: "#E24B4A" };
+    if (level === 3) return { labelText: "Razoável", color: "#EF9F27" };
+    if (level === 4) return { labelText: "Boa", color: "#639922" };
+    return { labelText: "Forte", color: "#1D9E75" };
 }
  
-export function PasswordStrength({ password }: PasswordStrengthProps) {
-    const level = getStrengthLevel(password); // Level (devolve do 5 até 0)
+export function PasswordStrength({ password, showError }: PasswordStrengthProps) {
+    const level = getPasswordVerifiedLevel(password); // Level (devolve do 5 até 0)
     const { labelText, color } = getStrengthLabelText(level); //LABEL diagnostico escrito
  
-    if (!password) return null;
- 
+    if (!showError) return null;
+
     return (
         <div className="flex flex-col gap-2 mt-1">
             {/* Barra de força */}

@@ -1,5 +1,8 @@
-import { getEmailVerified } from "./EmailVerify/EmailVerify";
-import { getStrengthLevel } from "./PasswordStrength/PasswordStrength";
+import { isPasswordConfirmed } from "./confirmPass";
+import { isValidCPF } from "./cpf";
+import { isValidEmail } from "./email";
+import { getPasswordVerifiedLevel } from "./password";
+import { getUsernameVerifiedLevel } from "./username";
 
 export function validateRegister(data: {
     username: string,
@@ -11,15 +14,17 @@ export function validateRegister(data: {
 
     const { username, email, password, confirmPassword, cpf } = data;
 
-    const emailValid = getEmailVerified(email);
-    const strengthLevel = getStrengthLevel(password);
-    const passwordMatch = password === confirmPassword;
+    const usernameLevel = getUsernameVerifiedLevel(username);
+    const emailValid = isValidEmail(email);
+    const strengthLevel = getPasswordVerifiedLevel(password);
+    const passwordMatch = isPasswordConfirmed(password, confirmPassword);
+    const cpfValid = isValidCPF(cpf);
 
     const isFormFilled = !!(username && email && password && confirmPassword && cpf);
     const isPasswordValid = passwordMatch && strengthLevel > 4;
-    const isEmailValid = emailValid;
+    const isUsernameValid = usernameLevel > 1;
 
-    const isValid = isFormFilled && isPasswordValid && isEmailValid;
+    const isValid = isFormFilled && isPasswordValid && emailValid && isUsernameValid && cpfValid;
 
     return{
         isValid
