@@ -1,15 +1,14 @@
-import { isPasswordConfirmed } from "../../../../utils/Validation/dataRules/confirmPass";
 
-type ConfirmPassVerifyProps = {
+type PasswordVerifyProps = {
     password: string;
-    confirmPassword: string;
-    showError: boolean;
+    showError: boolean
 }
  
-export function ConfirmPassVerify({ password, confirmPassword, showError }: ConfirmPassVerifyProps) {
-    const passed = isPasswordConfirmed(password, confirmPassword);
- 
+export function PasswordVerify({ password, showError }: PasswordVerifyProps) {
+    const passed = !!password; 
+
     if (!showError) return null;
+
     return (
         <div className="flex flex-col gap-2 mt-1">
             {/* Condição pra saber se está verificado e mostrar a cor verde na barra*/}
@@ -24,9 +23,10 @@ export function ConfirmPassVerify({ password, confirmPassword, showError }: Conf
             {/* feedback via texto pro usuario */}
             <div className="flex items-center justify-between">
                 <span className="text-xs" style={{ color: passed ? "#1D9E75" : "#EF4444" }}>
-                    {passed ? "" : "As senhas não coincidem"}
+                    {passed ? "" : "Preencha a senha"}
                 </span>
             </div>
         </div>
     );
+    
 }

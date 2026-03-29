@@ -1,5 +1,7 @@
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
-import { getPasswordVerifiedLevel, passwordRules } from "../../../../utils/Validation/password";
+import { getPasswordVerifiedLevel, passwordRules } from "../../../../utils/Validation/dataRules/password";
+import { useEffect, useState } from "react";
+import { getAnimationState } from "../../../../utils/ui/animation/animationState";
 
 type PasswordStrengthProps = {
     password: string;
@@ -16,12 +18,35 @@ function getStrengthLabelText(level: number): { labelText: string; color: string
  
 export function PasswordStrength({ password, showError }: PasswordStrengthProps) {
     const level = getPasswordVerifiedLevel(password); // Level (devolve do 5 até 0)
-    const { labelText, color } = getStrengthLabelText(level); //LABEL diagnostico escrito
+    const { labelText, color } = getStrengthLabelText(level); 
+    const [visible, setVisible] = useState(false);
+    const [hidden, setHidden] = useState(false);
+    const animHiddenBar = getAnimationState(hidden);
+
+    // showError liga componente quando tem erro, quem desliga é o visible.
+    useEffect(() => {
+        if(showError) setVisible(true);
+    }, [showError]);
+
+    useEffect(() => {
+        if (level === 5 && visible) {
+            const timer = setTimeout(() => {
+                setHidden(true); 
+                setTimeout(() => setVisible(false), 700);
+            }, 2000); 
+            // passa dois segundos pro usuario ver que a senha está forte,
+            // entra no primeiro timeout faz a animação fade e desmonta o componente com visible false após outro timeout de 700ms(tempo pra animar até desmontar)
+            return () => clearTimeout(timer); // limpa se o usuário editar a senha antes
+        } else{
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+            setHidden(false); 
+        }
+    }, [level, visible]);
  
-    if (!showError) return null;
+    if (!visible) return null;
 
     return (
-        <div className="flex flex-col gap-2 mt-1">
+        <div className={`flex flex-col gap-2 mt-1 transition-all duration-700 ${animHiddenBar.styles.fadeOutOpacity} ${animHiddenBar.styles.heightZero} overflow-hidden`}>
             {/* Barra de força */}
             <div className="flex gap-1">
                 {/* se for nivel 0 nem gera as barras */}

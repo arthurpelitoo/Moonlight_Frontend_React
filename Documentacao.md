@@ -139,9 +139,8 @@ body {
 
 ---
 
-✅ Seguindo essa organização, o projeto mantém:
+# ▶️ Rodar testes
 
-* **boa separação de responsabilidades**
-* **componentização correta**
-* **facilidade de manutenção**
-* **código escalável**
+* npx vitest
+* npx vitest --watch
+* npx vitest --coverage

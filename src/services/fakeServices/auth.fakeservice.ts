@@ -1,5 +1,5 @@
-import { isValidCPF } from "../../utils/Validation/cpf";
-import { isValidEmail } from "../../utils/Validation/email";
+import { isValidCPF } from "../../utils/Validation/dataRules/cpf";
+import { isValidEmail } from "../../utils/Validation/dataRules/email";
 
 export async function registerUserMock(data: {
   username: string;
@@ -31,6 +31,8 @@ export async function registerUserMock(data: {
     if(!data.password || data.password == "" || data.password.length > 16 || data.password.length < 8){
         throw new Error('Senha inválida ou obrigatória!');
     }
+    
+    return { message: "Usuário cadastrado com sucesso." };
   
 }
 
@@ -40,15 +42,12 @@ export async function loginUserMock(data: {
 }) {
   await new Promise(resolve => setTimeout(resolve, 1000));
 
-  if (data.email === "teste@email.com" && data.password === "123456") {
-    return {
-      token: "fake-jwt-token",
-      user: {
-        id: 1,
-        name: "Usuário Teste"
-      }
-    };
+  const validEmail = "teste@email.com"
+  const validPassword = "Qwert678";
+
+  if(data.email !== validEmail || data.password !== validPassword){
+      throw new Error("Usuario ou senha inválidos.");
   }
 
-  throw new Error("Credenciais inválidas");
+  return {message: "Usuário autenticado", token: "mock-token-fake-12345", user: { id: 4, username: "carlos", email: "teste@email.com", cpf: "801.605.710-14"} };
 }

@@ -5,7 +5,7 @@ import { CategoryCard } from "../../common/CategoryCard/CategoryCard";
 import logo from "../../../assets/Moonlight.png";
 import { CategoryCardSkeleton } from "../../common/CategoryCard/CategoryCardSkeleton";
 import { Carrousel } from "../../common/Carrousel/Carrousel";
-import { useBreakpoint } from "../../../hooks/breakpoints/breakpointHook";
+import { useBreakpoint } from "../../../hooks/breakpoints/useBreakpoint";
 import { FooterSection } from "./FooterSection";
 import { legalItems, siteMapItems } from "./FooterSectionData";
 
@@ -32,7 +32,7 @@ export function Footer(){
     return(
         <footer className="bg-night w-full flex flex-col justify-evenly items-center p-4 pt-12 gap-8">
             <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-6 px-4 lg:px-20">
-                <Button className="w-1/2 flex justify-center" as="a" href="/" variant="primary">
+                <Button className="w-1/2 flex justify-center" as="link" href="/" variant="primary">
                     <img src={logo} className="h-auto w-auto" alt="Moonlight Logo" />
                 </Button>
                 <div className="w-1/2 max-w-225 flex flex-col">

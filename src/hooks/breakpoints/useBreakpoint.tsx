@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 import { breakpoints } from "./breakpoint";
 
-export function useBreakpoint(){
+type breakpointStatement = {
+    isMobile: boolean,
+    isTablet: boolean,
+    isDesktop: boolean,
+    width: number
+}
+
+export function useBreakpoint(): breakpointStatement{
     const [width, setWidth] = useState(window.innerWidth);
 
     useEffect(() => {

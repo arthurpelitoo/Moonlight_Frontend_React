@@ -1,4 +1,4 @@
-import { isValidCPF } from "../../../../utils/Validation/cpf";
+import { isValidCPF } from "../../../../utils/Validation/dataRules/cpf";
 
 type CpfVerifyProps = {
     cpf: string;

@@ -1,4 +1,4 @@
-import { sanitizeData } from "../utils/Sanitizer/sanitizer";
+import { sanitizeData } from "../utils/sanitizer/sanitizer";
 import { api } from "./api";
 import { fetchCategoryByIdMock, fetchCategoryMock } from "./fakeServices/category.fakeservice";
 

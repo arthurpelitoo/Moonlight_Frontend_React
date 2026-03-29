@@ -4,7 +4,7 @@ import type { ButtonProps } from "./Button.types";
   const variantClass = {
     primary: "bg-night text-white",
     secondary: "bg-white text-black",
-    cta: "bg-blue-400 text-white",
+    cta: "bg-blue-500 text-white",
     transparent: "bg-transparent"
   };
  

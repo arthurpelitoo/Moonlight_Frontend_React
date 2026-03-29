@@ -20,7 +20,7 @@ export function InputFieldForm(props : InputFieldFormProps){
             <div className="flex items-center gap-3 bg-white/5 border rounded-md px-4 py-3 transition-all duration-300 focus-within:border-white/40 focus-within:bg-white/8">
                 {icon}
                 <InputBar
-                    className={`${classPattern}`}
+                    className={`${classPattern} w-full pl-2`}
                     onChange={(event) => {
                         onChange?.(event); // comportamento padrão
                         onChangeState?.(event.target.value); // comportamento simplificado

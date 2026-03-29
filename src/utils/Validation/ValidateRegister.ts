@@ -1,8 +1,8 @@
-import { isPasswordConfirmed } from "./confirmPass";
-import { isValidCPF } from "./cpf";
-import { isValidEmail } from "./email";
-import { getPasswordVerifiedLevel } from "./password";
-import { getUsernameVerifiedLevel } from "./username";
+import { isPasswordConfirmed } from "./dataRules/confirmPass";
+import { isValidCPF } from "./dataRules/cpf";
+import { isValidEmail } from "./dataRules/email";
+import { getPasswordVerifiedLevel } from "./dataRules/password";
+import { getUsernameVerifiedLevel } from "./dataRules/username";
 
 export function validateRegister(data: {
     username: string,
