@@ -1,5 +1,5 @@
 export type RegisterFormData = {
-    username: string,
+    name: string,
     email: string,
     cpf: string,
     password: string,
@@ -12,7 +12,7 @@ export type LoginFormData = {
 }
 
 export type RegisterTouched = {
-    username: boolean,
+    name: boolean,
     email: boolean,
     cpf: boolean,
     password: boolean,
@@ -22,4 +22,18 @@ export type RegisterTouched = {
 export type LoginTouched = {
     email: boolean,
     password: boolean
+}
+
+export type EditFormData = {
+    name: string,
+    cpf: string,
+    password: string,
+    confirmPassword: string
+}
+
+export type EditTouched = {
+    name: boolean,
+    cpf: boolean,
+    password: boolean,
+    confirmPassword: boolean
 }

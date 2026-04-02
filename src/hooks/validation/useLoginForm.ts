@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getLoginFormErrors } from "../../utils/Validation/formErrors/getFormErrors";
-import { loginUser } from "../../services/auth.service";
+import { loginUser } from "../../services/realServices/auth.service";
 import { validateLogin } from "../../utils/Validation/ValidateLogin";
 import { useAuth } from "../auth/useAuth";
 

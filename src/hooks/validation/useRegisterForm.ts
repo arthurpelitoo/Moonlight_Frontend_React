@@ -2,14 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { validateRegister } from "../../utils/Validation/ValidateRegister";
 import { getRegisterFormErrors } from "../../utils/Validation/formErrors/getFormErrors";
-import { registerUser } from "../../services/auth.service";
+import { registerUser } from "../../services/realServices/auth.service";
 import { formatCPF } from "../../utils/Validation/dataRules/cpf";
 
 export function useRegisterForm() {
     const navigate = useNavigate();
 
     const [fields, setFields] = useState({
-        username: "",
+        name: "",
         email: "",
         cpf: "",
         password: "",
@@ -17,7 +17,7 @@ export function useRegisterForm() {
     });
 
     const [touched, setTouched] = useState({
-        username: false,
+        name: false,
         email: false,
         cpf: false,
         password: false,
@@ -36,13 +36,11 @@ export function useRegisterForm() {
     const { isValid } = validateRegister(fields);
     const showErrors = getRegisterFormErrors(fields, touched, ui.submitted);
 
-    // Atualiza um campo genérico
     const setField = (field: keyof typeof fields) => (value: string) => {
         setFields(prev => ({ ...prev, [field]: value }));
         setUi(prev => ({...prev, apiError: null}));
     };
 
-    // CPF tem formatação especial
     const setCpf = (value: string) => {
         setFields(prev => ({ ...prev, cpf: formatCPF(value) }));
         setUi(prev => ({...prev, apiError: null}));
@@ -63,7 +61,12 @@ export function useRegisterForm() {
 
         try {
             setUi(prev => ({ ...prev, loading: true }));
-            await registerUser(fields);
+            await registerUser({
+                name: fields.name,
+                email: fields.email,
+                cpf: fields.cpf,
+                password: fields.password,
+            });
             setUi(prev => ({ ...prev, success: true }));
             setTimeout(() => navigate("/login"), 1500);
         } catch (err) {

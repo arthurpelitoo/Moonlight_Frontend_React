@@ -2,14 +2,14 @@ import { isValidCPF } from "../../utils/Validation/dataRules/cpf";
 import { isValidEmail } from "../../utils/Validation/dataRules/email";
 
 export async function registerUserMock(data: {
-  username: string;
+  name: string;
   email: string;
   cpf: string;
   password: string;
 }) { /* empacoto os dados em objeto e transformando o objeto em JSON mando pra rota tal em metodo post para o corpo de requisição (req.body) */
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    if(!data.username || data.username.length > 16 || data.username == "" ){
+    if(!data.name || data.name.length > 16 || data.name == "" ){
         throw new Error("Nome de Usuário inválido ou obrigatório!");
     }
 
@@ -49,5 +49,5 @@ export async function loginUserMock(data: {
       throw new Error("Usuario ou senha inválidos.");
   }
 
-  return {message: "Usuário autenticado", token: "mock-token-fake-12345", user: { id: 4, username: "carlos", email: "teste@email.com", cpf: "801.605.710-14"} };
+  return {message: "Usuário autenticado", token: "mock-token-fake-12345", user: { id: 4, name: "carlos", email: "teste@email.com", cpf: "80160571014", type: "admin"} };
 }
