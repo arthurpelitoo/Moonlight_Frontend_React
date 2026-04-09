@@ -5,7 +5,7 @@ import { useBreakpoint } from "../../../../hooks/breakpoints/useBreakpoint";
 import { getAnimationState } from "../../../../utils/ui/animation/animationState";
 import { useAuth } from "../../../../hooks/auth/useAuth";
 import { HeaderProfileDropdown } from "./components/HeaderProfileDropdown";
-import { Dropdown } from "../../../common/Generic/Dropdown/Dropdown";
+import { Dropdown } from "../../../common/Generic/Dropdown";
 import { useFetchCategories } from "../../../../hooks/fetchItems/useFetchCategories";
 import { SearchInputCompact } from "./components/SearchInputCompact";
 import { SearchInputHeader } from "./components/SearchInputHeader";
@@ -26,7 +26,7 @@ export function CustomerHeader(){
     return(
         <header className="fixed top-0 left-0 relative bg-night w-full flex z-11">
 
-                <Button className="justify-items-center w-1/2 pl-5 lg:pl-0 lg:w-1/3" as="link" href="/" variant="primary">
+                <Button className="justify-items-center w-1/2 pl-5 lg:pl-0 lg:w-1/3" as="link" href="/" variant="transparent">
                     <img src="/src/assets/MoonlightMenor.png" className="h-auto w-auto" alt="Moonlight Logo" />
                 </Button>
 
@@ -61,14 +61,14 @@ export function CustomerHeader(){
                           className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline" 
                           as="link" 
                           href="/" 
-                          variant="primary">
+                          variant="transparent">
                             Home
                         </Button>
                         <Button 
                           className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline" 
                           as="link" 
                           href="/offers" 
-                          variant="primary">
+                          variant="transparent">
                             Ofertas
                         </Button>
                         <Dropdown alignment="middle"
@@ -76,14 +76,14 @@ export function CustomerHeader(){
                                 <Button 
                                     className="max-lg:justify-self-center max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline flex items-center" 
                                     as="button"
-                                    variant="primary">
+                                    variant="transparent">
                                         Categorias
                                     <CaretDownIcon size={20} className={`transition-transform duration-300 ${open ? "rotate-180" : "rotate-0"}`} />
                                 </Button>  
                             )}
                         >
                             {(categories.map(category => ( //carregou? então categorias reais aqui
-                                    <Button key={category.id_category} as="link" variant="primary" href={"/"+ category.id_category} className={`max-lg:active:bg-white max-lg:active:text-night lg:hover:bg-white lg:hover:text-night transition-all duration-300 w-full block px-4 py-2 text-sm`}>
+                                    <Button key={category.id_category} as="link" variant="transparent" href={"/"+ category.id_category} className={`max-lg:active:bg-white max-lg:active:text-night lg:hover:bg-white lg:hover:text-night transition-all duration-300 w-full block px-4 py-2 text-sm`}>
                                         {category.name}
                                     </Button>
                             )))}
@@ -92,7 +92,7 @@ export function CustomerHeader(){
                           className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline" 
                           as="link" 
                           href="/news" 
-                          variant="primary">
+                          variant="transparent">
                             Novidades
                         </Button>
                     </div>
@@ -102,7 +102,7 @@ export function CustomerHeader(){
                             : <Button 
                                 className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 max-lg-hover:translate-y-0 transition-all duration-300 hover:-translate-y-2"
                                 onClick={() => setSearchIsClicked(!searchIsClicked)} 
-                                variant="primary" 
+                                variant="transparent" 
                                 icon={<MagnifyingGlassIcon size={32} weight={searchIsClicked ? "fill" : "thin"} className={`transition-transform duration-600 ${animIsSearchClicked.styles.rotate}`} />}>
                               </Button>
                         }
@@ -110,7 +110,7 @@ export function CustomerHeader(){
                           className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 max-lg:hover:translate-y-0 lg:block lg:w-fit w-full transition-all duration-300 hover:-translate-y-2 flex justify-center gap-1.5 items-center flex-row" 
                           as="link" 
                           href="/" 
-                          variant="primary" 
+                          variant="transparent" 
                           icon={<ShoppingCartSimpleIcon size={32} weight="thin" />}>
                               {isTablet || isMobile ? "Carrinho" : ""}
                         </Button>
@@ -137,7 +137,7 @@ export function CustomerHeader(){
                       className="bg-transparent" 
                       as="button" 
                       onClick={() => setSearchIsClicked(!searchIsClicked)} 
-                      variant="primary" 
+                      variant="transparent" 
                       icon={<XIcon size={32} weight="thin" />}>
                     </Button>
                     <SearchInputHeader/>

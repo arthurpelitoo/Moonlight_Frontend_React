@@ -1,8 +1,8 @@
 import { sanitizeData } from "../../utils/sanitizer/sanitizer";
 import { api } from "../api";
-import { loginUserMock, registerUserMock } from "../fakeServices/auth.fakeservice";
+import { loginMock, registerMock } from "../fakeServices/auth.fakeservice";
 
-export async function registerUser(data: {
+export async function register(data: {
   name: string;
   email: string;
   cpf: string;
@@ -12,10 +12,10 @@ export async function registerUser(data: {
     const cleanData = sanitizeData(data);
 
     if (import.meta.env.VITE_USE_MOCK === "true") {
-        return registerUserMock(cleanData);
+        return registerMock(cleanData);
     }
 
-  const response = await api.post("/register", cleanData);
+  const response = await api.post("/api/auth/register", cleanData);
   return response.data;
 }
 
@@ -27,9 +27,10 @@ export async function loginUser(data: {
     const cleanData = sanitizeData(data);
 
     if(import.meta.env.VITE_USE_MOCK === "true"){
-        return loginUserMock(cleanData);
+        return loginMock(cleanData);
     }
-
-    const response = await api.post("/login", cleanData);
+    
+    const response = await api.post("/api/auth/login", cleanData);
+    console.log(response.data);
     return response.data;
 }

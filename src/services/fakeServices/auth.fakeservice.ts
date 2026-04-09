@@ -1,7 +1,7 @@
-import { isValidCPF } from "../../utils/Validation/dataRules/cpf";
-import { isValidEmail } from "../../utils/Validation/dataRules/email";
+import { isCPFValid } from "../../utils/Validation/dataRules/cpf";
+import { isEmailValid } from "../../utils/Validation/dataRules/email";
 
-export async function registerUserMock(data: {
+export async function registerMock(data: {
   name: string;
   email: string;
   cpf: string;
@@ -13,7 +13,7 @@ export async function registerUserMock(data: {
         throw new Error("Nome de Usuário inválido ou obrigatório!");
     }
 
-    if(!data.email || !isValidEmail(data.email)){
+    if(!data.email || !isEmailValid(data.email)){
         throw new Error("Email inválido ou obrigatório!");
     }
 
@@ -24,7 +24,7 @@ export async function registerUserMock(data: {
         throw new Error('Usuário já existe com esse email!');
     }
 
-    if(!isValidCPF(data.cpf)){
+    if(!isCPFValid(data.cpf)){
         throw new Error('CPF inválido!');
     }
 
@@ -36,7 +36,7 @@ export async function registerUserMock(data: {
   
 }
 
-export async function loginUserMock(data: {
+export async function loginMock(data: {
   email: string;
   password: string;
 }) {

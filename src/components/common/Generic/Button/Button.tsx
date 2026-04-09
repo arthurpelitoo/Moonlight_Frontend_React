@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 import type { ButtonProps } from "./Button.types";
  
   const variantClass = {
-    primary: "bg-night text-white",
-    secondary: "bg-white text-black",
-    cta: "bg-blue-500 text-white",
+    primary: "bg-night text-white transition-all duration-300 max-lg:active:bg-night-hover max-lg:active:scale-95 max-lg:active:text-text-night-hover lg:hover:bg-night-hover lg:hover:text-text-night-hover",
+    secondary: "bg-night-soft/60 text-white transition-all duration-200 hover:bg-night-soft/80 hover:scale-105 active:scale-95",
+    cta: "bg-blue-cta text-white transition-all duration-300 max-lg:active:bg-blue-cta-hover max-lg:active:scale-95 lg:hover:bg-blue-cta-hover",
     transparent: "bg-transparent"
   };
  
 export function Button(props: ButtonProps) {
-  const { children, icon, className = "", variant = "primary", as = "button" } = props;
+  const { children, icon, className = "", variant = "transparent", as = "button" } = props;
 
   const classPattern = `${variantClass[variant]} ${className}`.trim();
  

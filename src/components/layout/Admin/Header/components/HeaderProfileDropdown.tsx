@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "../../../../common/Generic/Button/Button";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import { useAuth } from "../../../../../hooks/auth/useAuth";
-import { Dropdown } from "../../../../common/Generic/Dropdown/Dropdown";
+import { Dropdown } from "../../../../common/Generic/Dropdown";
 import { WarmWelcomeTime } from "./WarmWelcomeTime";
 
 export function HeaderProfileDropdown(){

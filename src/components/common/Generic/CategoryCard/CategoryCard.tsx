@@ -8,7 +8,7 @@ type CategoryCardProps = {
 export function CategoryCard({category} : CategoryCardProps) {
 
   return (
-    <Card className="w-full relative overflow-hidden group">
+    <Card variant="container" className="w-full relative overflow-hidden group">
       <img
         src={category.image}
         className="h-64 w-full object-cover object-center rounded-md grayscale

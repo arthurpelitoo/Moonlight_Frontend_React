@@ -3,13 +3,11 @@ import { Button } from "../../../../common/Generic/Button/Button";
 import { WarmWelcomeTime } from "./WarmWelcomeTime";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import { useAuth } from "../../../../../hooks/auth/useAuth";
-import { Dropdown } from "../../../../common/Generic/Dropdown/Dropdown";
+import { Dropdown } from "../../../../common/Generic/Dropdown";
 
 export function HeaderProfileDropdown(){
     const [confirmLogout, setConfirmLogout] = useState(false);
     const {logout, user} = useAuth();
-
-    
 
     return(
         <Dropdown alignment={"middle"}

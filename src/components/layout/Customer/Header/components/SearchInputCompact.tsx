@@ -1,6 +1,6 @@
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
-import { InputBar } from "../../../../common/Generic/InputBar/InputBar";
 import { Button } from "../../../../common/Generic/Button/Button";
+import { InputBar } from "../../../../common/Generic/InputBar";
 
 
 type SearchInputCompactProps = {

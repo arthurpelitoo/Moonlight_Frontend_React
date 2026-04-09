@@ -1,10 +1,13 @@
-type CardContentProps = {
+import type { ComponentPropsWithoutRef } from "react"
+
+type CardContentProps = ComponentPropsWithoutRef<"div"> & {
   children: React.ReactNode
 }
 
-export function CardContent({ children }: CardContentProps) {
+export function CardContent(props: CardContentProps) {
+  const { children, ...rest } = props;
   return (
-    <div>
+    <div {...rest}>
       {children}
     </div>
   )

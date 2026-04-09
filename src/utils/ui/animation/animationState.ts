@@ -1,8 +1,9 @@
 
-type AnimationState = {
+export type AnimationState = {
     styles: {
         rotate: string;
         rotate180: string;
+        slideUp: string;
         slideDown: string;
         fadeInOpacity: string;
         fadeOutOpacity: string;
@@ -23,6 +24,7 @@ export function getAnimationState(isActive: boolean): AnimationState{
         styles: {
             rotate: isActive ? "rotate-45" : "rotate-0",
             rotate180: isActive ? "rotate-180" : "rotate-0",
+            slideUp: isActive ? "-translate-y-4" : "translate-y-0",
             slideDown: isActive ? "translate-y-0" : "-translate-y-4",
             fadeInOpacity: isActive ? "opacity-100" : "opacity-0",
             fadeOutOpacity: isActive ? "opacity-0" : "opacity-100",

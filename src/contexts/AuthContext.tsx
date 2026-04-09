@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AuthContext } from "../hooks/auth/useAuth";
-import type { AuthUser } from "../@types/User";
+import type { AuthUser } from "../@types";
+import { setLogoutFn } from "../utils/authBridge/logout";
 
 
 export function AuthProvider({children}: { children: React.ReactNode }){
@@ -19,6 +20,10 @@ export function AuthProvider({children}: { children: React.ReactNode }){
         }
         setLoading(false);
     }, []);
+
+    useEffect(() => {
+        setLogoutFn(logout);
+    }, [])
 
     const login = (token: string, user: AuthUser) => {
         localStorage.setItem("token", token);

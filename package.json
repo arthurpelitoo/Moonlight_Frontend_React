@@ -14,8 +14,11 @@
     "axios": "^1.13.6",
     "cpf-cnpj-validator": "^1.0.3",
     "react": "^19.2.0",
+    "react-data-table-component": "^7.7.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^7.13.1"
+    "react-hot-toast": "^2.6.0",
+    "react-router-dom": "^7.13.1",
+    "styled-components": "^6.3.12"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

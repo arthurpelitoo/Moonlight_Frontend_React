@@ -5,7 +5,6 @@
   text-align: center;
 } */
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 body{
   font-family: "Poppins", sans-serif;
@@ -37,13 +36,20 @@ body{
 @theme {
   --color-night: #000000;
   --color-night-soft: #111827;
+  --color-blue-cta: #2b7fff;
+
+  --color-night-hover: color-mix(in oklab, var(--color-white) 90%, transparent);
+  --color-blue-cta-hover: #155dfc;
+
+  --color-text-night-hover: #000000;
+
   --color-surface-card: #1F2330;
   --color-icon-branco: #FFFFFF;
   --color-icon-branco-soft: #F2F4F8;
 
   --animate-glow-cta: glowCTA 2s ease-in-out infinite;
   --animate-glow: glow 2s ease-in-out infinite;
-  --animate-pulse-soft: pulse 2s ease-in-out infinite;
+  --animate-pulse-soft: pulseSoft 2s ease-in-out infinite;
   --animate-fade-in: fadeIn 0.6s ease forwards;
 
   --translateUp: .itemTranslateUp; 
@@ -61,7 +67,7 @@ body{
   100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.2); }
 }
 
-@keyframes pulse {
+@keyframes pulseSoft {
   0%   { transform: scale(1); opacity: 1; }
   50%  { transform: scale(1.1); opacity: 0.8; }
   100% { transform: scale(1); opacity: 1; }
@@ -94,5 +100,22 @@ body{
     left: 0;
   }
 
-  
+  .fx-underline-to-left {
+    position: relative;
+  }
+
+  .fx-underline-to-left::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 95%;
+    height: 1px;
+    background: linear-gradient(to right, var(--color-night), var(--color-blue-cta), var(--color-blue-cta-hover));
+    animation: pulseSoft 1s infinite ease-in-out;
+  }
+
+  .gradient-overlay {
+    background: linear-gradient(to top, hsl(var(--background)) 0%, transparent 60%);
+  }  
 }

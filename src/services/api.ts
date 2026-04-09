@@ -1,4 +1,8 @@
 import axios from "axios";
+import toast from "react-hot-toast";
+import { navigate } from "../utils/navigate/navigate";
+import { logoutFn } from "../utils/authBridge/logout";
+let redirecting = false;
 
 export const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -16,9 +20,17 @@ api.interceptors.request.use((config) => {
 
 api.interceptors.response.use(
     response => response,
-
     error => {
-        const message = error.response?.data?.message || "Erro inesperado.";
-        return Promise.reject(new Error(message));
+      const status = error.response?.status;
+
+      if ((status === 401 || status === 403) && !redirecting) {
+        redirecting = true;
+        logoutFn?.();
+        toast.error("Sessão expirada. Faça login novamente.");
+        navigate?.("/login");
+      }
+
+      const message = error.response?.data?.message || "Erro inesperado.";
+      return Promise.reject(new Error(message));
     }
 );

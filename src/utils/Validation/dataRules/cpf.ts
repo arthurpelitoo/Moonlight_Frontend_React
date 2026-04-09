@@ -1,6 +1,6 @@
 import { cpf } from "cpf-cnpj-validator";
 
-export function isValidCPF(cpfValue: string): boolean {
+export function isCPFValid(cpfValue: string): boolean {
   return cpf.isValid(cpfValue);
 }
 
