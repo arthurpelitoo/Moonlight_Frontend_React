@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { AuthContext } from "../hooks/auth/useAuth";
-import type { AuthUser } from "../@types";
 import { setLogoutFn } from "../utils/authBridge/logout";
+import type { AuthUserDTO } from "../@types/auth/auth.dto";
 
 
 export function AuthProvider({children}: { children: React.ReactNode }){
     const [loading, setLoading] = useState(true);
     const [token, setToken] = useState<string | null>(null);
-    const [user, setUser] = useState<AuthUser | null>(null);
+    const [user, setUser] = useState<AuthUserDTO | null>(null);
 
     useEffect(() => {
         const savedToken = localStorage.getItem("token");
@@ -25,7 +25,7 @@ export function AuthProvider({children}: { children: React.ReactNode }){
         setLogoutFn(logout);
     }, [])
 
-    const login = (token: string, user: AuthUser) => {
+    const login = (token: string, user: AuthUserDTO) => {
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(user));
         setToken(token);

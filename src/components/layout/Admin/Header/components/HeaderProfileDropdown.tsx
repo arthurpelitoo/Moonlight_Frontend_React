@@ -27,7 +27,7 @@ export function HeaderProfileDropdown(){
                         <Button as="link" variant="primary" href="/library" className={`max-lg:active:bg-white max-lg:active:text-night lg:hover:bg-white lg:hover:text-night transition-all duration-300 w-full block px-4 py-2 text-sm`}>Biblioteca</Button>
                         <Button as="link" variant="primary" href="/orders" className={`max-lg:active:bg-white max-lg:active:text-night lg:hover:bg-white lg:hover:text-night transition-all duration-300 w-full block px-4 py-2 text-sm`}>Pedidos</Button>
                         {user?.type === "admin" && 
-                            <Button as="link" variant="primary" href="/admin" className={`max-lg:active:bg-white max-lg:active:text-night lg:hover:bg-white lg:hover:text-night transition-all duration-300 w-full block px-4 py-2 text-sm`}>Administrativo</Button>
+                            <Button as="link" variant="primary" href="/" className={`max-lg:active:bg-white max-lg:active:text-night lg:hover:bg-white lg:hover:text-night transition-all duration-300 w-full block px-4 py-2 text-sm`}>Loja</Button>
                         }
                         <Button as="button" onClick={() => setConfirmLogout(true)} variant="primary" className={`rounded-b-md max-lg:active:bg-white max-lg:active:text-night lg:hover:bg-white lg:hover:text-night transition-all duration-300 w-full block px-4 py-2 text-sm`}> 
                             Sair
