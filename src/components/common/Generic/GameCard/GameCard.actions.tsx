@@ -25,8 +25,36 @@ export const RenderDefaultActions = (props : GameCardProps) => {
     );
   }
 
+  if(showBuyButton && props.game.price == 0){
+    return(
+      <>
+        <Button 
+          variant="cta" 
+          className="rounded-md p-2 w-full animate-glow-cta" 
+          onClick={(e) => {
+            e.stopPropagation();
+            onBuy();
+          }}
+        >
+          Obter Jogo 
+        </Button>
+        <Button 
+          variant={isAlreadyInCart ? "danger" : "primary"} 
+          className={`rounded-md p-2 w-fit`}
+          onClick={(e) => {
+            e.stopPropagation();
+            onCart();
+          }}
+        >
+          {isAlreadyInCart ? <TrashSimpleIcon size={24} /> : <ShoppingCartIcon size={24}/>}
+        </Button>
+    </>
+    )
+  }
+
   return(
         <>
+
           {showBuyButton && (
             <Button 
               variant="cta" 
