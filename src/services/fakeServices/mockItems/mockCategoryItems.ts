@@ -56,5 +56,12 @@ export const mockCategoryItems: CategoryResponseDTO[] = [
     description: "Experimente a vida real ou profissões inusitadas com o máximo de realismo possível.",
     // Microsoft Flight Simulator
     image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1250410/header.jpg"
+  },
+  {
+    id_category: 9,
+    name: "Indie",
+    description: "Jogos desenvolvidos por estúdios independentes com propostas criativas e únicas.",
+    // Terraria
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/105600/header.jpg"
   }
 ];
