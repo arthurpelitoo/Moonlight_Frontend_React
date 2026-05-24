@@ -5,16 +5,27 @@ export function isPriceValid(price: string): boolean {
 }
 
 export const maskPrice = (value: string) => {
-    // Remove tudo que não é número (ex: "49,90" -> "4990")
+    // Extrai só dígitos — "0.10" vira "010", "49.90" vira "4990"
     const onlyNumbers = value.replace(/\D/g, "");
 
-    // Se o campo estiver vazio, retorna "0.00" para não quebrar o estado
-    if (!onlyNumbers) return "0.00";
+    // Remove zeros à esquerda antes de calcular
+    //    "010" → "10", "001" → "1", "000" → "0"
+    const stripped = onlyNumbers.replace(/^0+/, "") || "0";
 
-    // Transforma em número e divide por 100 para criar as casas decimais
-    // Ex: "4990" vira 49.9
-    const numberValue = Number(onlyNumbers) / 100;
+    // Se ficou só "0" (campo zerado ou vazio), retorna "0.00"
+    if (stripped === "0") return "0.00";
 
-    // Formata como string com ponto decimal fixo em 2 casas
+    // Desloca como calculadora: "10" → 0.10, "4990" → 49.90
+    const numberValue = Number(stripped) / 100;
+
     return numberValue.toFixed(2);
+};
+
+export const maskPriceFilter = (value: string): string => {
+  const onlyNumbers = value.replace(/\D/g, "");
+  const stripped = onlyNumbers.replace(/^0+/, "") || "0";
+
+  if (stripped === "0") return ""; // ← única diferença: vazio em vez de "0.00"
+
+  return (Number(stripped) / 100).toFixed(2);
 };
