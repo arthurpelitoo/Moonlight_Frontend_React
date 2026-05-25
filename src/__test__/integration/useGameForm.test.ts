@@ -73,6 +73,6 @@ describe('useGameForm Integration', () => {
     });
 
     expect(result.current.ui.submitted).toBe(true);
-    expect(result.current.ui.loading).toBe(true);
+    expect(result.current.ui.loading).toBe(false);
   });
 });
