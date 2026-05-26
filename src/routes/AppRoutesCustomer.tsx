@@ -14,8 +14,9 @@ import { CheckoutPendingPage } from "../pages/Customer/Checkout/CheckoutPendingP
 import CategoryPage from "../pages/Customer/Category/CategoryPage";
 import OrderPage from "../pages/Customer/User/Order/OrderPage";
 import LibraryPage from "../pages/Customer/User/Library/LibraryPage";
+import { CatalogPage } from "../pages/Customer/Catalog/CatalogPage";
 
-export const AppRoutesCustomer = ( 
+export const AppRoutesCustomer = (
     <Route element={<CustomerLayout/>}>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -23,6 +24,7 @@ export const AppRoutesCustomer = (
         <Route path="/games/:id" element={<GamePage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/categories/:id" element={<CategoryPage />} />
+        <Route path="/catalog" element={<CatalogPage />} />
 
         {/* rotas protegidas */}
         <Route path="/profile" element={
@@ -54,12 +56,12 @@ export const AppRoutesCustomer = (
             <ProtectedRoute>
                  <CheckoutSuccessPage />
             </ProtectedRoute>
-           
+
         } />
 
         <Route path="/checkout/failure" element={
             <ProtectedRoute>
-              <CheckoutFailurePage />  
+              <CheckoutFailurePage />
             </ProtectedRoute>
         } />
 

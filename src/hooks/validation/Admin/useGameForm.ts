@@ -32,7 +32,7 @@ const emptyFields: InitialData = {
 }
 
 /**
- * 
+ *
  * @param mode modo do formulario, se é create ou edit
  * @param initialData dados iniciais, se for update resgata os dados da row que a tabela recebe ou então começa com campos vazios mesmo.
  * @returns retorna muitos objetos para auxiliar o formulario sem encher de logica no componente.
@@ -55,7 +55,7 @@ export function useGameForm(mode: GameFormData, initialData?: InitialData){
         // Atualizo o estado mantendo a imutabilidade
         setFields(prev => ({
             ...prev, // recupero todos os campos anteriores (title, price, etc.)
-            
+
             // Verifico se o ID da categoria já existe no array de categorias
             categories: prev.categories.includes(id_category)
                 ? // CASO JÁ EXISTA: Filtra o array e remove o ID que desobedesce a condição de comparação, ou seja o id que ja existe. (Desmarca a categoria)
