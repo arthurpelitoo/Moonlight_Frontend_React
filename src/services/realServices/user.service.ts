@@ -1,22 +1,22 @@
 import type { ApiResponse } from "../../@types/common/apiResponse";
 import type { PaginatedResponse } from "../../@types/common/pagination";
-import type { UpdateMeResponseDTO, UserDTO } from "../../@types/user/user.dto";
+import type { UpdateMeResponseDTO, UserResponseDTO } from "../../@types/user/user.dto";
 import type { UpdateMePayload, UserPaginatedQueryPayload, UserPayload } from "../../@types/user/user.payload";
 import { sanitizeData } from "../../utils/sanitizer/sanitizer";
 import { api } from "../api";
 import { createUserMock, fetchUserByIdMock, fetchUsersMock, updateMeMock } from "../fakeServices/user.fakeservice";
 
 
-export async function fetchUsersPaginated(query: UserPaginatedQueryPayload): Promise<PaginatedResponse<UserDTO>> {
+export async function fetchUsersPaginated(query: UserPaginatedQueryPayload): Promise<PaginatedResponse<UserResponseDTO>> {
     if (import.meta.env.VITE_USE_MOCK === "true") {
         return fetchUsersMock(query.page, query.limit);
     }
-    
+
     const response = await api.get(`/api/users/pag`, { params: query });
     return response.data;
 }
 
-export async function fetchUserById(id_user: number): Promise<UserDTO> {
+export async function fetchUserById(id_user: number): Promise<UserResponseDTO> {
     if (import.meta.env.VITE_USE_MOCK === "true") {
         return fetchUserByIdMock(id_user);
     }

@@ -9,6 +9,6 @@ export interface UserResponseDTO {
   type: 'admin' | 'customer';
 }
 
-export interface UpdateMeResponseDTO extends ApiResponse { 
-    user?: AuthUserResponseDTO 
+export interface UpdateMeResponseDTO extends ApiResponse {
+    user: AuthUserResponseDTO
 }
