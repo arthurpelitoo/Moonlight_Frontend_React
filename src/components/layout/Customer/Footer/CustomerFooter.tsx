@@ -5,9 +5,9 @@ import { useBreakpoint } from "../../../../hooks/breakpoints/useBreakpoint";
 import { FooterSection } from "./components/FooterSection";
 import { legalItems, siteMapItems } from "./components/FooterSectionData";
 import { Carrousel } from "../../../common/Generic/Carrousel";
-import type { CategoryPaginatedQueryPayload } from "../../../../@types";
 import { useFetchPaginatedCategories } from "../../../../hooks/fetchItems/store/useFetchPaginatedCategories";
 import { useMemo } from "react";
+import type { CategoryPaginatedQueryPayload } from "../../../../@types/category/category.payload";
 
 export function CustomerFooter(){
     const query: CategoryPaginatedQueryPayload = useMemo(() => ({
@@ -31,11 +31,11 @@ export function CustomerFooter(){
                     <h2 className="text-2xl text-center lg:text-left">Todas as Categorias de Jogos:</h2>
                     <Carrousel cardsPerView={cardsPerView}>
                         {isLoading //está carregando? se sim placeholder carregando
-                            ? Array.from({ length: cardsPerView }).map((_, i) => (<CategoryCardSkeleton key={i} />)) 
+                            ? Array.from({ length: cardsPerView }).map((_, i) => (<CategoryCardSkeleton key={i} />))
                             : (categories?.map(category => ( //carregou? então componente real
                                 <Button as="link" href={"/categories/"+ category.id_category} variant="transparent">
-                                    <CategoryCard 
-                                        key={category.id_category} 
+                                    <CategoryCard
+                                        key={category.id_category}
                                         category={category}
                                         classNameImage="object-contain"
                                     />
@@ -55,6 +55,6 @@ export function CustomerFooter(){
                     <h3 className="text-xl text-center w-full lg:text-end">©Moonlight - 2026 Todos os direitos reservados.</h3>
                 </div>
             </div>
-        </footer>    
+        </footer>
     )
 }

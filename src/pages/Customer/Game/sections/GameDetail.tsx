@@ -30,7 +30,7 @@ export function GameDetail({id_game} : GameDetailProps){
     if(!game){
         navigate("/");
         return null;
-    } 
+    }
 
     const cartItem = { id_game: game.id_game!, title: game.title, price: game.price, image: game.image, categories: game.categories}
 
@@ -41,10 +41,10 @@ export function GameDetail({id_game} : GameDetailProps){
             </header>
             <div className="flex max-lg:pt-4 max-lg:flex-col max-lg:w-full max-lg:flex-wrap lg:flex-row lg:flex-nowrap lg:p-2 lg:pl-20 lg:pb-4 lg:gap-18">
                 <section className="lg:w-2/3">
-                    <img 
-                        className="w-full object-cover h-full min-h-[400px] rounded-xl max-lg:justify-self-center max-lg:w-[90vw]" 
-                        src={game.banner_image} 
-                        alt={game.title} 
+                    <img
+                        className="w-full object-cover h-full min-h-[400px] rounded-xl max-lg:justify-self-center max-lg:w-[90vw]"
+                        src={game.banner_image}
+                        alt={game.title}
                     />
                 </section>
                 <section className="flex flex-col justify-center flex-wrap max-lg:text-center max-lg:items-center max-lg:p-12 lg:items-start lg:w-1/3 lg:text-left lg:p-0">
@@ -53,7 +53,7 @@ export function GameDetail({id_game} : GameDetailProps){
                             {game.price == 0 ? "Grátis" : formatCurrency(game.price)}
                         </p>
                     }
-                    {isOwned(game.id_game) ? (
+                    {isOwned(game.id_game!) ? (
                         <Button
                             variant="cta"
                             className="block rounded-md p-4 w-fit animate-glow-cta mb-2"
@@ -74,12 +74,12 @@ export function GameDetail({id_game} : GameDetailProps){
                             <Button
                                 variant={alreadyInCart ? "danger" : "primary"}
                                 className="flex gap-2 content-center text-center items-center border-0 rounded-md p-2 mb-2"
-                                onClick={() => alreadyInCart 
-                                    ? removeItemFromCart(game.id_game!) 
+                                onClick={() => alreadyInCart
+                                    ? removeItemFromCart(game.id_game!)
                                     : addItemToCart(cartItem)
                                 }
                             >
-                                <ShoppingCartIcon size={18}/> 
+                                <ShoppingCartIcon size={18}/>
                                 {alreadyInCart ? "Remover do carrinho" : "Adicionar ao Carrinho"}
                             </Button>
                         </>
