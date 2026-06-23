@@ -12,7 +12,6 @@ import { useGameFilters } from "../../../../hooks/filters/admin/useGameFilters";
 import { GameFilterSideBar } from "./GameFilterSideBar";
 
 type GameDataTableProps = {
-  title?: string;
   category?: string;
   launch_date_from?: string;
   launch_date_to?: string;
@@ -93,7 +92,7 @@ export function GameDataTable(props: GameDataTableProps) {
                   </Button>
                 </div>
               </div>
-              <Button id="user-add-btn" as="link" href="/admin/users/create" variant="cta" className="flex items-center gap-2 px-4 py-2 rounded-md">
+              <Button id="game-add-btn" as="link" href="/admin/games/create" variant="cta" className="flex items-center gap-2 px-4 py-2 rounded-md">
                   <PlusIcon size={32} weight="thin" /> Cadastrar Jogo
               </Button>
             </div>

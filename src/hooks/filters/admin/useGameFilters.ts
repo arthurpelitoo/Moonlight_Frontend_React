@@ -14,7 +14,9 @@ export function useGameFilters() {
     price_max: searchParams.get("price_max")
       ? Number(searchParams.get("price_max"))
       : undefined,
-    active: searchParams.get("active") ?? undefined,
+    active: searchParams.get("active") === "true" ? true
+          : searchParams.get("active") === "false" ? false
+          : undefined,
     onChangeCategory: (category: string) => updateURLParam("category", category),
     onChangeActive: (active: string) => updateURLParam("active", active),
     onPriceCleanUp: () =>
