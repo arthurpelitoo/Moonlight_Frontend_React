@@ -1,22 +1,20 @@
-import { CaretDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react/dist/ssr";
+import { CaretDownIcon, XIcon } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "../../../../components/common/Generic/Button/Button";
 import { Dropdown } from "../../../../components/common/Generic/Dropdown";
-import { useFetchCategories } from "../../../../hooks/fetchItems/store/useFetchCategories";
 import { getAnimationState } from "../../../../utils/ui/animation/animationState";
 import { InputBar } from "../../../../components/common/Generic/InputBar";
 import { useState } from "react";
 import { maskPrice } from "../../../../utils/Validation/dataRules/Game/gamePrice";
-import { useCatalogFilters } from "../../../../hooks/filters/customer/useCatalogFilters";
+import { useCategoryGamesFilters } from "../../../../hooks/filters/customer/useCategoryGamesFilters";
 
-type CatalogSideBarProps = {
+type CategorySideBarProps = {
   open: boolean;
   onClose: () => void;
 }
 
-export function CatalogSideBar(props: CatalogSideBarProps) {
+export function CategorySideBar(props: CategorySideBarProps) {
   const { styles } = getAnimationState(props.open);
-  const { categories } = useFetchCategories();
-  const { filters } = useCatalogFilters();
+  const { filters } = useCategoryGamesFilters();
 
   // estado local — segura o que o usuário está digitando
   const [priceMin, setPriceMin] = useState(filters.price_min ? String(filters.price_min) : "0.00");
@@ -52,55 +50,6 @@ export function CatalogSideBar(props: CatalogSideBarProps) {
         <Button onClick={props.onClose} className="text-gray-400 hover:text-white">
           <XIcon size={20} />
         </Button>
-      </div>
-      <div className="w-full flex justify-center">
-        <Dropdown
-          backgroundActive="on"
-          alignment="middle"
-          trigger={(open) => (
-            <Button
-              className="max-lg:justify-self-center max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline flex items-center"
-              as="button"
-              variant="transparent"
-            >
-              Categorias
-              <CaretDownIcon
-                size={20}
-                className={`transition-transform duration-300 ${open ? "rotate-180" : "rotate-0"}`}
-              />
-            </Button>
-          )}
-        >
-          <Button
-            as="button"
-            variant="transparent"
-            onClick={() => filters.onChangeCategory("")}
-            className={`max-lg:active:bg-white max-lg:active:text-night lg:hover:bg-white lg:hover:text-night transition-all duration-300 w-full py-2 rounded-t-md text-sm`}
-          >
-            Limpar Filtro
-          </Button>
-          {categories?.map((cat) => {
-            const active = cat.name === filters.category;
-            const { styles } = getAnimationState(active);
-            return (
-              <Button
-                key={cat.id_category}
-                as="button"
-                variant="transparent"
-                onClick={() => filters.onChangeCategory(cat.name)}
-                className={`max-lg:active:bg-white max-lg:active:text-night lg:hover:bg-white lg:hover:text-night transition-all duration-300 text-left w-full flex justify-between items-center gap-2 px-4 py-2 text-sm`}
-              >
-                {cat.name}
-                <span>
-                  <CheckIcon
-                    size={20}
-                    className={`${styles.fadeInOpacity} ${styles.slideDown} transition-all duration-300`}
-                  />
-                </span>
-              </Button>
-            );
-          })}
-        </Dropdown>
       </div>
       <div className="w-full flex justify-center">
         <Dropdown

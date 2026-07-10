@@ -2,7 +2,7 @@ import { CatalogGamesList } from "./sections/CatalogGamesList";
 import { useState } from "react";
 import { SearchInputBar } from "../../../components/common/Generic/SearchInputBar";
 import { CatalogSideBar } from "./sections/CatalogSideBar";
-import { useCatalogFilters } from "../../../hooks/filters/useCatalogFilters";
+import { useCatalogFilters } from "../../../hooks/filters/customer/useCatalogFilters";
 import { SlidersIcon } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "../../../components/common/Generic/Button/Button";
 import { useUpdateUrlParam } from "../../../hooks/updateUrlParam/useUpdateUrlParam";
