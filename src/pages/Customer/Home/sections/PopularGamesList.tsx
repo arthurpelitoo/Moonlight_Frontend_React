@@ -27,7 +27,7 @@ export function PopularGamesList(){
 
     return(
         <section className="pt-8 w-full bg-gradient-to-b from-night-soft via-night-soft to-night">
-            <div className="container justify-self-center w-full animate-fade-in">
+            <div className="container justify-self-center w-full animate-fade-in p-6">
                 <div className="mb-5">
                     <h1 className="text-2xl">Jogos em Destaque:</h1>
                     <span>Os títulos mais populares</span>
@@ -36,31 +36,31 @@ export function PopularGamesList(){
                     {games?.map(game => {
                         const alreadyInCart = items.some(cartItem => cartItem.id_game === game.id_game);
                         const cartItem = { id_game: game.id_game!, title: game.title, price: game.price, image: game.image, categories: game.categories}
-                        
+
 
                         return(
-                            <GameCard 
+                            <GameCard
                                 game={game}
-                                onCart={() => alreadyInCart 
-                                    ? removeItemFromCart(game.id_game!) 
+                                onCart={() => alreadyInCart
+                                    ? removeItemFromCart(game.id_game!)
                                     : addItemToCart(cartItem)
                                 }
                                 onBuy={() => addItemToCart(cartItem, "cart")}
                                 gamePage={`/games/${game.id_game}`}
                                 isAlreadyInCart={alreadyInCart}
                                 key={game.id_game}
-                                isOwned={isOwned(game.id_game!)} 
+                                isOwned={isOwned(game.id_game!)}
                                 actions={isOwned(game.id_game!) ? (
                                     <Button variant="cta" className="rounded-md p-2 w-full animate-glow-cta" onClick={() => window.open(game.link)}>
                                         Baixar
                                     </Button>
                                 ) : undefined}
-                            /> 
-                        ) 
+                            />
+                        )
                     })}
                 </div>
                 <div className="p-8 w-full">
-                    {hasMore 
+                    {hasMore
                     ? (
                         <Button variant="secondary" className="p-4 rounded-md flex justify-self-center" onClick={() => loadMore()}>
                             Ver mais
