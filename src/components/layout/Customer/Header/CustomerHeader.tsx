@@ -10,12 +10,13 @@ import { useBreakpoint } from "../../../../hooks/breakpoints/useBreakpoint";
 import { getAnimationState } from "../../../../utils/ui/animation/animationState";
 import { useAuth } from "../../../../hooks/auth/useAuth";
 import { HeaderProfileDropdown } from "./components/HeaderProfileDropdown";
-// import { Dropdown } from "../../../common/Generic/Dropdown";
 import { SearchInputCompact } from "./components/SearchInputCompact";
 import { SearchInputHeader } from "./components/SearchInputHeader";
-// import { useFetchCategories } from "../../../../hooks/fetchItems/store/useFetchCategories";
 import { useCart } from "../../../../hooks/cart/useCart";
 import moonlightMenor from "@/assets/MoonlightMenor.png";
+import { Dropdown } from "../../../common/Generic/Dropdown";
+import { CaretDownIcon } from "@phosphor-icons/react/dist/ssr";
+import { useFetchCategories } from "../../../../hooks/fetchItems/store/useFetchCategories";
 
 export function CustomerHeader() {
   const [hamburguerIsOpen, setHamburguerIsOpen] = useState(false); //como está false, ao fazer !hamburguerisOpen é true.
@@ -24,7 +25,7 @@ export function CustomerHeader() {
   const animIsSearchClicked = getAnimationState(searchIsClicked);
   const animIsHamburguerOpen = getAnimationState(hamburguerIsOpen);
   const { isAuthenticated } = useAuth();
-  // const {categories} = useFetchCategories();
+  const {categories} = useFetchCategories();
   const { items } = useCart();
 
   return (
@@ -72,44 +73,44 @@ export function CustomerHeader() {
         <div className="flex w-full justify-center flex-col text-center lg:flex-row lg:static lg:w-1/2 lg:gap-6.25">
           {isTablet || isMobile ? <SearchInputCompact /> : ""}
           <Button
-            className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline"
+            className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent lg:fx-underline"
             as="link"
             href="/"
             variant="transparent"
           >
             Home
           </Button>
-          {/* <Button
-                          className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline"
-                          as="link"
-                          href="/explore"
-                          variant="transparent">
-                            Explorar
-                        </Button>
-                        <Dropdown alignment="middle" backgroundActive="on"
-                            trigger={(open) =>(
-                                <Button
-                                    className="max-lg:justify-self-center max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline flex items-center"
-                                    as="button"
-                                    variant="transparent">
-                                        Categorias
-                                    <CaretDownIcon size={20} className={`transition-transform duration-300 ${open ? "rotate-180" : "rotate-0"}`} />
-                                </Button>
-                            )}
-                        >
-                            {(categories?.map(category => ( //carregou? então categorias reais aqui
-                                    <Button key={category.id_category} as="link" variant="transparent" href={"/categories/"+ category.id_category} className={`max-lg:active:bg-white max-lg:active:text-night lg:hover:bg-white lg:hover:text-night transition-all duration-300 w-full block px-4 py-2 text-sm`}>
-                                        {category.name}
-                                    </Button>
-                            )))}
-                        </Dropdown>
-                        <Button
-                          className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline"
-                          as="link"
-                          href="/news"
-                          variant="transparent">
-                            Novidades
-                        </Button>*/}
+           {/*<Button
+              className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent lg:fx-underline"
+              as="link"
+              href="/explore"
+              variant="transparent">
+                Explorar
+            </Button>*/}
+            <Dropdown alignment="middle" backgroundActive="on"
+                trigger={(open) =>(
+                    <Button
+                        className="max-lg:w-full max-lg:justify-center max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent lg:fx-underline flex items-center"
+                        as="button"
+                        variant="transparent">
+                            Categorias
+                        <CaretDownIcon size={20} className={`transition-transform duration-300 ${open ? "rotate-180" : "rotate-0"}`} />
+                    </Button>
+                )}
+            >
+                {(categories?.map(category => ( //carregou? então categorias reais aqui
+                  <Button key={category.id_category} as="link" variant="transparent" href={"/categories/"+ category.id_category} className={`max-lg:active:bg-white max-lg:active:text-night lg:hover:bg-white lg:hover:text-night transition-all duration-300 w-full block px-4 py-2 text-sm`}>
+                      {category.name}
+                  </Button>
+                )))}
+            </Dropdown>
+            {/*<Button
+              className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent lg:fx-underline"
+              as="link"
+              href="/news"
+              variant="transparent">
+                Novidades
+            </Button>*/}
         </div>
         <div className="flex w-full flex-col justify-center text-center items-center lg:flex-row lg:static lg:w-1/2 lg:gap-6.25 ">
           {isTablet || isMobile ? (
@@ -136,7 +137,7 @@ export function CustomerHeader() {
             icon={<ShoppingCartSimpleIcon size={32} weight="thin" />}
           >
             {isTablet || isMobile
-              ? `Carrinho ${items?.length}`
+              ? `No Carrinho ${items?.length}`
               : `${items?.length}`}
           </Button>
           {!isAuthenticated ? (
