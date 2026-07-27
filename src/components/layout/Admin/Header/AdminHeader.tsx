@@ -49,35 +49,35 @@ export function AdminHeader(){
            flex-col items-center lg:flex lg:w-2/3 lg:bg-transparent lg:static lg:flex-row`}>
                     <div className="flex w-full justify-center flex-col text-center lg:flex-row lg:static lg:w-1/2 lg:gap-6.25">
                         <Button
-                          className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline"
+                          className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent lg-fx-underline"
                           as="link"
                           href="/admin"
                           variant="transparent">
                             Home
                         </Button>
                         <Button
-                          className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline"
+                          className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent lg-fx-underline"
                           as="link"
                           href="/admin/users"
                           variant="transparent">
                             Usuarios
                         </Button>
                         <Button
-                          className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline"
+                          className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent lg-fx-underline"
                           as="link"
                           href="/admin/games"
                           variant="transparent">
                             Jogos
                         </Button>
                         <Button
-                          className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline"
+                          className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent lg-fx-underline"
                           as="link"
                           href="/admin/categories"
                           variant="transparent">
                             Categorias
                         </Button>
                         <Button
-                          className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline"
+                          className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent lg-fx-underline"
                           as="link"
                           href="/"
                           variant="transparent">
