@@ -1,8 +1,9 @@
 import { Spinner } from "../../../components/common/Generic/Spinner";
 import { useFetchGame } from "../../../hooks/fetchItems/fetchOne/useFetchGame";
-import { CarrouselCardSection } from "./sections/CarrouselCardSection";
 import { HeroSection } from "./sections/HeroSection";
-import { PopularGamesList } from "./sections/PopularGamesList";
+import { CategoryCarrouselCardSection } from "./sections/CategoryCarrouselCardSection";
+import { AllGamesList } from "./sections/AllGamesList";
+import { GamesUnder20List } from "./sections/GamesUnder20List";
 
 function MainPage() {
   const {game, isLoading} = useFetchGame(1);
@@ -20,8 +21,9 @@ function MainPage() {
       {game && (
         <HeroSection game={game} />
       )}
-      <CarrouselCardSection/>
-      <PopularGamesList/>
+      <CategoryCarrouselCardSection />
+      <GamesUnder20List/>
+      <AllGamesList/>
     </main>
   )
 }
