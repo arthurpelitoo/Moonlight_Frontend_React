@@ -73,7 +73,7 @@ export function CustomerHeader() {
         <div className="flex w-full justify-center flex-col text-center lg:flex-row lg:static lg:w-1/2 lg:gap-6.25">
           {isTablet || isMobile ? <SearchInputCompact /> : ""}
           <Button
-            className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent lg:fx-underline"
+            className="max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent lg-fx-underline"
             as="link"
             href="/"
             variant="transparent"
@@ -90,7 +90,7 @@ export function CustomerHeader() {
             <Dropdown alignment="middle" backgroundActive="on"
                 trigger={(open) =>(
                     <Button
-                        className="max-lg:w-full max-lg:justify-center max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent lg:fx-underline flex items-center"
+                        className="max-lg:w-full max-lg:justify-center max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent lg-fx-underline flex items-center"
                         as="button"
                         variant="transparent">
                             Categorias
