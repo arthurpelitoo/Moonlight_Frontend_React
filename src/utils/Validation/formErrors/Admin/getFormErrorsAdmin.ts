@@ -18,7 +18,7 @@ export function getUserFormErrors(data: UserFormData, touched: UserTouched, subm
     const strengthLevel = getPasswordVerifiedLevel(data.password);
     const passwordMatch = data.password === data.confirmPassword;
     const typeValid = isUserTypeValid(data.type);
-    
+
     return {
         showErrorUser: (touched.name || submitted) && !nameValid,
         showErrorEmail: (touched.email || submitted) && !emailValid,
@@ -31,12 +31,12 @@ export function getUserFormErrors(data: UserFormData, touched: UserTouched, subm
 
 export function getGameFormErrors(data: GameFormData, touched: GameTouched, submitted: boolean){
      /* validações para mostrar erro */
-     
+
     const titleValid = isTitleValid(data.title);
     const priceValid = isPriceValid(data.price); //(preço tem que ser um numero e ser maior ou igual a 0)
     const launchDateValid = isLaunchDateValid(data.launch_date); //(a data de lançamento tem de ser maior que 0, ou seja, tem de estar marcada.)
-    const activeValid = !data.active //(active tem de estar marcado.)
-    
+    const activeValid = data.active === "true" || data.active ===  "false"; //(active tem de estar marcado.)
+
     return {
         showErrorTitle: (touched.title || submitted) && !titleValid,
         showErrorPrice: (touched.price || submitted) && !priceValid,
@@ -47,13 +47,12 @@ export function getGameFormErrors(data: GameFormData, touched: GameTouched, subm
 
 export function getCategoryFormErrors(data: CategoryFormData, touched: CategoryTouched, submitted: boolean){
      /* validações para mostrar erro */
-     
+
     const nameValid = isCategoryNameValid(data.name);
     const descriptionValid = isDescriptionValid(data.description); //(preço tem que ser um numero e ser maior ou igual a 0)
-    
+
     return {
         showErrorName: (touched.name || submitted) && !nameValid,
         showErrorDescription: (touched.description || submitted) && !descriptionValid,
     }
 }
-
