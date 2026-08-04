@@ -8,6 +8,7 @@ import { AppRoutesCustomer } from "./routes/AppRoutesCustomer.tsx";
 import { setNavigate } from "./utils/navigate/navigate.ts";
 import { CartProvider } from "./contexts/CartContext.tsx";
 import { LibraryProvider } from "./contexts/LibraryContext.tsx";
+import { ScrollToTop } from "./components/ScrollToTop.tsx";
 
 function AppRoutes() {
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ function AppRoutes() {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <LibraryProvider>
         <CartProvider>
             <AppRoutes />
