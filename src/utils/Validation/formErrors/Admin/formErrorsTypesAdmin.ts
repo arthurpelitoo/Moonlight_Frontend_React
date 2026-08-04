@@ -24,7 +24,7 @@ export type GameFormData = {
     image: string,
     link: string,
     launch_date: string,
-    active: boolean,
+    active: string,
     categories: number[],
 }
 
