@@ -7,6 +7,7 @@ import { Button } from "../../components/common/Generic/Button/Button";
 import { PencilIcon, TrashIcon } from "@phosphor-icons/react";
 import { deleteGame } from "../../services/realServices/game.service";
 import type { GameResponseDTO } from "../../@types/game/game.dto";
+import { resolveImageUrl } from "../../utils/resolveImage/resolveImageUrl";
 
 export function useGameTable(refetch: () => void){
     const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null);
@@ -15,7 +16,7 @@ export function useGameTable(refetch: () => void){
     const GameColumns: TableColumn<GameResponseDTO>[] = [
         { name: 'Titulo', selector: (row: GameResponseDTO) => row.title, sortable: true },
         { name: 'Preço', selector: (row: GameResponseDTO) => formatCurrency(row.price) },
-        { name: 'Imagem', cell: (row: GameResponseDTO) => (<><img className="h-30" src={`${row.image}`}/></>)},
+        { name: 'Imagem', cell: (row: GameResponseDTO) => (<><img className="h-30" src={`${resolveImageUrl(row.image)}`}/></>)},
         { name: 'Ativo', selector: (row: GameResponseDTO) => (row.active ? "Sim" : "Não") },
         {
             name: 'Ações',
