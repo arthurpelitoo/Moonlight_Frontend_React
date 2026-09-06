@@ -12,6 +12,9 @@ import { TextAreaForm } from "../../../../components/common/Forms/TextAreaFrom";
 import { useFetchCategories } from "../../../../hooks/fetchItems/store/useFetchCategories";
 import type { GameResponseDTO } from "../../../../@types/game/game.dto";
 import { useMemo } from "react";
+import { useImageUpload } from "../../../../hooks/upload/useImageUpload";
+import { resolveImageUrl } from "../../../../utils/resolveImage/resolveImageUrl";
+import { Spinner } from "../../../../components/common/Generic/Spinner";
 
 
 type GameFormProps = {
@@ -43,6 +46,9 @@ export function GameForm({mode, game} : GameFormProps){
       active: game.active ? "true" : "false",
       categories: CategoryIds,
   } : undefined);
+
+  const bannerUpload = useImageUpload('game', setField("banner_image"));
+  const cardUpload = useImageUpload('game', setField("image"));
 
   // Tela de sucesso
   if (ui.submitted && !ui.apiError && ui.success) {
@@ -94,34 +100,64 @@ export function GameForm({mode, game} : GameFormProps){
               />
           </div>
 
-          <div className="max-lg:flex max-lg:flex-col lg:grid lg:grid-cols-3 gap-4">
+          <div className="items-center max-lg:flex max-lg:flex-col lg:grid lg:grid-cols-2 gap-4">
               <div>
                   <InputFieldForm
-                      id="game-image" label="URL da Imagem do Card" type="text"
-                      value={fields.image} onChangeState={setField("image")}
+                      id="game-image" label="URL da Imagem do Card" type="file"
+                      accept="image/*"
+                      onChange={cardUpload.handleFileChange}
+                      disabled={cardUpload.uploading}
                       placeholder="https://shared.akamai.steamstatic.com//store_item_assets//steam//apps//1245620//hero_capsule.jpg?t=1767883716"
                       maxLength={255}
                       icon={<ImageIcon size={18} />}
                   />
               </div>
-              <div>
-                  <InputFieldForm
-                      id="game-banner" label="URL da Imagem do Banner" type="text"
-                      value={fields.banner_image} onChangeState={setField("banner_image")}
-                      placeholder="https://cdn.akamai.steamstatic.com/steam/apps/1245620/library_hero.jpg"
-                      maxLength={255}
-                      icon={<ImagesIcon size={18} />}
+              {cardUpload.uploading && <div><Spinner variant="primary"/></div>}
+              {(cardUpload.previewUrl || fields.image) && (
+                <div className="justify-self-center flex flex-col items-center">
+                  <img
+                      src={cardUpload.previewUrl ?? resolveImageUrl(fields.image)}
+                      alt="Preview do card"
+                      className="w-32 h-full object-cover bg-center rounded mt-2"
                   />
+                  <p>Preview da Imagem no Card</p>
+                </div>
+              )}
+          </div>
+          <div className="items-center max-lg:flex max-lg:flex-col lg:grid lg:grid-cols-2 gap-4">
+            <div>
+                <InputFieldForm
+                    id="game-banner" label="URL da Imagem do Banner" type="file"
+                    accept="image/*"
+                    onChange={bannerUpload.handleFileChange}
+                    disabled={bannerUpload.uploading}
+                    placeholder="https://cdn.akamai.steamstatic.com/steam/apps/1245620/library_hero.jpg"
+                    maxLength={255}
+                    icon={<ImagesIcon size={18} />}
+                />
+            </div>
+            {bannerUpload.uploading && <div><Spinner variant="primary"/></div>}
+            {(bannerUpload.previewUrl || fields.banner_image) && (
+              <div className="justify-self-center flex flex-col items-center">
+                <img
+                    src={bannerUpload.previewUrl ?? resolveImageUrl(fields.banner_image)}
+                    alt="Preview do banner"
+                    className="w-fit h-full object-cover rounded mt-2"
+                />
+                <p>Preview da Imagem do banner</p>
               </div>
-              <div>
-                  <InputFieldForm
-                      id="game-link" label="Link (Steam/plataforma)" type="text"
-                      value={fields.link} onChangeState={setField("link")}
-                      placeholder="https://store.steampowered.com/..."
-                      maxLength={255}
-                      icon={<LinkIcon size={18} />}
-                  />
-              </div>
+            )}
+          </div>
+          <div className="max-lg:flex max-lg:flex-col lg:grid lg:grid-cols-1 gap-4">
+            <div>
+              <InputFieldForm
+                  id="game-link" label="Link (Steam/plataforma)" type="text"
+                  value={fields.link} onChangeState={setField("link")}
+                  placeholder="https://store.steampowered.com/..."
+                  maxLength={255}
+                  icon={<LinkIcon size={18} />}
+              />
+            </div>
           </div>
           <div className="max-lg:flex max-lg:flex-col lg:grid lg:grid-cols-2 gap-4">
               <div>

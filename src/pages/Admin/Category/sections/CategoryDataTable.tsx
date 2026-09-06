@@ -10,7 +10,6 @@ import { useCategoryTable } from "../../../../hooks/tables/useCategoryTable";
 import { useCategoryFilters } from "../../../../hooks/filters/admin/useCategoryFilters";
 import { useFetchCategoriesTable } from "../../../../hooks/fetchItems/table/useFetchCategoriesTable";
 
-
 export function CategoryDataTable() {
   const { filters } = useCategoryFilters();
   const { updateURLParam } = useUpdateUrlParam();

@@ -6,6 +6,7 @@ import { Button } from "../../components/common/Generic/Button/Button";
 import { PencilIcon, TrashIcon } from "@phosphor-icons/react";
 import { deleteCategory } from "../../services/realServices/category.service";
 import type { CategoryResponseDTO } from "../../@types/category/category.dto";
+import { resolveImageUrl } from "../../utils/resolveImage/resolveImageUrl";
 
 export function useCategoryTable(refetch: () => void){
     const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null);
@@ -14,7 +15,7 @@ export function useCategoryTable(refetch: () => void){
     const CategoryColumns: TableColumn<CategoryResponseDTO>[] = [
         { name: 'Nome', selector: (row: CategoryResponseDTO) => row.name, sortable: true },
         { name: 'Descrição', selector: (row: CategoryResponseDTO) => row.description },
-        { name: 'Imagem', cell: (row: CategoryResponseDTO) => (<><img className="h-30" src={`${row.image}`}/></>)},
+        { name: 'Imagem', cell: (row: CategoryResponseDTO) => (<><img className="h-30" src={`${resolveImageUrl(row.image)}`}/></>)},
         {
             name: 'Ações',
             cell: (row: CategoryResponseDTO, rowIndex: number) => (
