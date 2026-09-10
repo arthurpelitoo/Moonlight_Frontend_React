@@ -23,7 +23,7 @@ export function AllGamesList(){
     const {games, hasMore, loadMore, isLoading} = useFetchPaginatedGames(query);
     let conteudo;
     if (isLoading) {
-      conteudo = <Spinner variant="primary" />;
+      conteudo = <Spinner />;
     } else if (games.length === 0) {
       conteudo = <p>Nenhum jogo encontrado.</p>
     } else {

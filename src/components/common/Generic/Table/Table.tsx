@@ -24,13 +24,13 @@ type Props<RowData> = {
 export function Table<RowData>(props: Props<RowData>){
     const {columns, data, isLoading, totalRows, onPageChange, ...rest} = props;
     return(
-        <DataTable 
-            columns={columns} 
-            data={data} 
-            progressPending={isLoading} 
-            progressComponent={<Spinner variant="primary"/>} 
-            noDataComponent={<p className="text-white/50 py-6">Nenhum registro encontrado</p>} 
-            customStyles={tableStyles} 
+        <DataTable
+            columns={columns}
+            data={data}
+            progressPending={isLoading}
+            progressComponent={<Spinner />}
+            noDataComponent={<p className="text-white/50 py-6">Nenhum registro encontrado</p>}
+            customStyles={tableStyles}
             highlightOnHover
             pagination
             paginationComponentOptions={paginationOptions}
@@ -39,7 +39,7 @@ export function Table<RowData>(props: Props<RowData>){
             paginationServer={totalRows !== undefined}         // ativa server-side se passar totalRows
             paginationTotalRows={totalRows}
             onChangePage={(page) => onPageChange?.(page)}
-            {...rest} 
+            {...rest}
         />
     )
 }

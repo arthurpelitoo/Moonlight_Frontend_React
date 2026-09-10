@@ -112,7 +112,7 @@ export function GameForm({mode, game} : GameFormProps){
                       icon={<ImageIcon size={18} />}
                   />
               </div>
-              {cardUpload.uploading && <div><Spinner variant="primary"/></div>}
+              {cardUpload.uploading && <div><Spinner /></div>}
               {(cardUpload.previewUrl || fields.image) && (
                 <div className="justify-self-center flex flex-col items-center">
                   <img
@@ -136,7 +136,7 @@ export function GameForm({mode, game} : GameFormProps){
                     icon={<ImagesIcon size={18} />}
                 />
             </div>
-            {bannerUpload.uploading && <div><Spinner variant="primary"/></div>}
+            {bannerUpload.uploading && <div><Spinner /></div>}
             {(bannerUpload.previewUrl || fields.banner_image) && (
               <div className="justify-self-center flex flex-col items-center">
                 <img
