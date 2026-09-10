@@ -198,6 +198,7 @@ export function GameForm({mode, game} : GameFormProps){
                     </label>
                   ))}
               </div>
+              <FieldVerify showError={showErrors.showErrorTitle} passed={isTitleValid(fields.title)} errorMessage="O titulo do jogo tem que ter 1 ou até no maximo 50 caracteres"/>
           </div>
 
           {ui.apiError && (

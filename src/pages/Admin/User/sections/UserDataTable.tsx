@@ -14,7 +14,7 @@ import { UserFilterSideBar } from "./UserFilterSideBar";
 type UserDataTableProps = {
   email?: string;
   cpf?: string;
-  type?: string;
+  role?: string;
 };
 
 export function UserDataTable(props: UserDataTableProps) {
@@ -29,7 +29,7 @@ export function UserDataTable(props: UserDataTableProps) {
       name: filters.name,
       cpf: props.cpf,
       email: props.email,
-      type: props.type
+      role: props.role
   }), [props, filters.name]);
 
   const {users, isLoading, refetch, onPageChange, totalRows} = useFetchUsersTable(query);

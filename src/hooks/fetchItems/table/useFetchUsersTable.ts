@@ -11,16 +11,16 @@ export function useFetchUsersTable(query: UserPaginatedQueryPayload){
     const [internalPage, setInternalPage] = useState(1);
     const [version, setVersion] = useState(0);
 
-    const {limit, cpf, email, name, type} = query
+    const {limit, cpf, email, name, role} = query
 
     useEffect(() => {
         setUsers([]);
         setInternalPage(1);
-    }, [limit, cpf, email, name, type]);
+    }, [limit, cpf, email, name, role]);
 
     useEffect(() => {
         let isMounted = true;
-        
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
         setIsLoading(true)
         fetchUsersPaginated(query)
@@ -36,7 +36,7 @@ export function useFetchUsersTable(query: UserPaginatedQueryPayload){
         });
         return () => { isMounted = false; };
 
-    }, [internalPage, limit, cpf, email, name, type, version]);
+    }, [internalPage, limit, cpf, email, name, role, version]);
 
     const refetch = () => setVersion(v => v + 1);
 
