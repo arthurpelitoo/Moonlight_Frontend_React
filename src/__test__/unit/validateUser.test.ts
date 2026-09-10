@@ -9,7 +9,7 @@ describe('validateUser Unit Test', () => {
     password: 'Password123!',
     confirmPassword: 'Password123!',
     cpf: '12345678901', // Supondo que isCPFValid aceite apenas números
-    roles: []
+    id_roles: [1]
   };
 
   it('deve retornar isValid: false se as senhas não coincidirem', () => {
