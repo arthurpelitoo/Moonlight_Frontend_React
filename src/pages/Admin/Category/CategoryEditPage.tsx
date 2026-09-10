@@ -10,7 +10,7 @@ export function CategoryEditPage() {
     const category: CategoryResponseDTO = state.category;
 
     return(
-        <main className="pt-10 min-h-screen bg-gradient-to-b from-night-soft via-night-soft to-night">
+        <main className="pt-10 min-h-screen bg-gradient-to-b from-base-soft via-base-soft to-base">
             <Card variant="primary" className="flex flex-col mb-10 gap-10 border py-8 container justify-self-center">
                 <CardHeader className="flex items-center gap-4">
                     <Button as="link" href="/admin/categories" icon={<ArrowLeftIcon size={32} weight="thin" />} className="bg-white/10 p-2 text-white rounded-xl hover:bg-white/20"/>
@@ -18,7 +18,7 @@ export function CategoryEditPage() {
                 </CardHeader>
                 <hr />
                 <CategoryForm mode="edit" category={category}/>
-            </Card>  
+            </Card>
         </main>
     )
 }

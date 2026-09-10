@@ -18,7 +18,7 @@ export function CategoryCard({category, classNameImage = "object-cover object-ce
       />
 
       <div className="absolute inset-0 transition-all duration-300 flex items-center justify-center rounded-md">
-        <p className="text-white bg-night-soft font-bold text-xl group-hover:-translate-y-1 transition-all duration-300 rounded-md p-2">
+        <p className="text-white bg-base-soft font-bold text-xl group-hover:-translate-y-1 transition-all duration-300 rounded-md p-2">
           {category.name}
         </p>
       </div>

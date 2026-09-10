@@ -31,7 +31,7 @@ export function GamesUnder20List(){
     }
 
     return(
-        <section className="pt-8 w-full bg-night-soft">
+        <section className="pt-8 w-full bg-base-soft">
             <div className="container justify-self-center w-full animate-fade-in p-6">
                 <div className="mb-5">
                     <h1 className="text-2xl">Jogos abaixo de 20 reais:</h1>

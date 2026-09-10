@@ -34,7 +34,7 @@ export function UserFilterSideBar(props: UserFilterSideBarProps) {
   return (
     <aside className={`
             fixed top-0 left-0 h-full w-64 z-30
-            bg-night-soft border-r border-white/10
+            bg-base-soft border-r border-white/10
             flex flex-col gap-6 p-4 overflow-y-auto
             transition-transform duration-300 ease-in-out
             ${styles.slideInsideScreen}
@@ -51,7 +51,7 @@ export function UserFilterSideBar(props: UserFilterSideBarProps) {
           alignment="middle"
           trigger={(open) => (
             <Button
-              className="max-lg:justify-self-center max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline flex items-center"
+              className="max-lg:justify-self-center max-lg:active:bg-white max-lg:active:text-base max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline flex items-center"
               as="button"
               variant="transparent"
             >
@@ -67,7 +67,7 @@ export function UserFilterSideBar(props: UserFilterSideBarProps) {
             as="button"
             variant="transparent"
             onClick={() => filters.onChangeRole("")}
-            className={`max-lg:active:bg-white max-lg:active:text-night lg:hover:bg-white lg:hover:text-night transition-all duration-300 w-full py-2 rounded-t-md text-sm`}
+            className={`max-lg:active:bg-white max-lg:active:text-base lg:hover:bg-white lg:hover:text-base transition-all duration-300 w-full py-2 rounded-t-md text-sm`}
           >
             Limpar Filtro
           </Button>
@@ -80,7 +80,7 @@ export function UserFilterSideBar(props: UserFilterSideBarProps) {
                 as="button"
                 variant="transparent"
                 onClick={() => filters.onChangeRole(role.name)}
-                className={`max-lg:active:bg-white max-lg:active:text-night lg:hover:bg-white lg:hover:text-night transition-all duration-300 text-left w-full flex justify-between items-center gap-2 px-4 py-2 text-sm`}
+                className={`max-lg:active:bg-white max-lg:active:text-base lg:hover:bg-white lg:hover:text-base transition-all duration-300 text-left w-full flex justify-between items-center gap-2 px-4 py-2 text-sm`}
               >
                 {role.name}
                 <span>
@@ -100,7 +100,7 @@ export function UserFilterSideBar(props: UserFilterSideBarProps) {
           alignment="middle"
           trigger={(open) => (
             <Button
-              className="max-lg:justify-self-center max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline flex items-center"
+              className="max-lg:justify-self-center max-lg:active:bg-white max-lg:active:text-base max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline flex items-center"
               as="button"
               variant="transparent"
             >
@@ -134,7 +134,7 @@ export function UserFilterSideBar(props: UserFilterSideBarProps) {
           alignment="middle"
           trigger={(open) => (
             <Button
-              className="max-lg:justify-self-center max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline flex items-center"
+              className="max-lg:justify-self-center max-lg:active:bg-white max-lg:active:text-base max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline flex items-center"
               as="button"
               variant="transparent"
             >

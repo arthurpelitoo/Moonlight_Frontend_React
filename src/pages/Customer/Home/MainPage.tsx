@@ -10,14 +10,14 @@ function MainPage() {
 
   if (isLoading) {
     return (
-      <div className="w-full h-screen bg-gradient-to-b from-night-soft via-night to-night flex items-center justify-center">
+      <div className="w-full h-screen bg-gradient-to-b from-base-soft via-base to-base flex items-center justify-center">
         <Spinner variant="primary" />
       </div>
     );
   }
 
   return (
-    <main className="bg-gradient-to-b from-night-soft via-night to-night flex flex-col items-center justify-center">
+    <main className="bg-gradient-to-b from-base-soft via-base to-base flex flex-col items-center justify-center">
       {game && (
         <HeroSection game={game} />
       )}

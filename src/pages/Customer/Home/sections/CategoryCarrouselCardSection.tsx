@@ -39,7 +39,7 @@ export function CategoryCarrouselCardSection(){
                 </Carrousel>
             </div>
             {/* fade esquerda */}
-            <div className="pointer-events-none top-0 w-full pb-8 bg-linear-to-b from-black to-night-soft z-10" />
+            <div className="pointer-events-none top-0 w-full pb-8 bg-linear-to-b from-black to-base-soft z-10" />
         </section>
 
 
