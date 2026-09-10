@@ -20,7 +20,7 @@ function LibraryPage() {
     if (isLoading) {
         return (
             <div className="w-full min-h-screen bg-gradient-to-b from-base-soft via-base-soft to-base flex items-center justify-center">
-                <Spinner variant="primary" />
+                <Spinner />
             </div>
         );
     }

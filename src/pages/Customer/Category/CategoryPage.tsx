@@ -24,7 +24,7 @@ export function CategoryPage() {
   if (isLoading) {
       return (
           <div className="w-full h-screen bg-gradient-to-b from-base-soft via-base-soft to-base flex items-center justify-center">
-              <Spinner variant="primary" />
+              <Spinner />
           </div>
       );
   }

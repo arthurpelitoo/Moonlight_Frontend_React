@@ -11,7 +11,7 @@ function MainPage() {
   if (isLoading) {
     return (
       <div className="w-full h-screen bg-gradient-to-b from-base-soft via-base to-base flex items-center justify-center">
-        <Spinner variant="primary" />
+        <Spinner />
       </div>
     );
   }

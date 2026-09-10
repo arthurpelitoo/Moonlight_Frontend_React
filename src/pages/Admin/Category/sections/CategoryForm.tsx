@@ -76,7 +76,7 @@ export function CategoryForm({mode, category} : CategoryFormProps){
                     icon={<ImageIcon size={18} />}
                 />
               </div>
-              {uploading && <div><Spinner variant="primary"/></div>}
+              {uploading && <div><Spinner /></div>}
               {(previewUrl || fields.image) && (
                 <div className="justify-self-center flex flex-col items-center">
                   <img
