@@ -29,6 +29,7 @@ export async function createUser(data: UserPayload): Promise<ApiResponse>{
     if (import.meta.env.VITE_USE_MOCK === "true") {
         return createUserMock(cleanData);
     }
+    console.log(cleanData);
     const response = await api.post(`/api/users`, cleanData);
     return response.data;
 }

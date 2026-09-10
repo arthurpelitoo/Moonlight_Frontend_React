@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useUserFilters } from "../../../../hooks/filters/admin/useUserFilters";
 import { formatCPF } from "../../../../utils/Validation/dataRules/User/userCpf";
 import { CheckIcon } from "@phosphor-icons/react";
+import { useFetchRoles } from "../../../../hooks/fetchItems/admin/useFetchRoles";
 
 type UserFilterSideBarProps = {
   open: boolean;
@@ -15,9 +16,8 @@ type UserFilterSideBarProps = {
 
 export function UserFilterSideBar(props: UserFilterSideBarProps) {
   const { styles } = getAnimationState(props.open);
+  const { roles } = useFetchRoles();
   const { filters } = useUserFilters();
-  const customerActive = getAnimationState(filters.type === "customer").styles;
-  const adminActive = getAnimationState(filters.type === "admin").styles;
 
   // estado local — segura o que o usuário está digitando
   const [cpf, setCpf] = useState(filters.cpf ?? "");
@@ -29,7 +29,7 @@ export function UserFilterSideBar(props: UserFilterSideBarProps) {
     filters.onCleanUpFilters?.();
   }
 
-  function handleConfirmFilters() { filters.onConfirmFilters?.(cpf.replace(/\D/g, ""), email, filters.type); }
+  function handleConfirmFilters() { filters.onConfirmFilters?.(cpf.replace(/\D/g, ""), email); }
 
   return (
     <aside className={`
@@ -44,6 +44,55 @@ export function UserFilterSideBar(props: UserFilterSideBarProps) {
         <Button onClick={props.onClose} className="text-gray-400 hover:text-white">
           <XIcon size={20} />
         </Button>
+      </div>
+      <div className="w-full flex justify-center">
+        <Dropdown
+          backgroundActive="on"
+          alignment="middle"
+          trigger={(open) => (
+            <Button
+              className="max-lg:justify-self-center max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline flex items-center"
+              as="button"
+              variant="transparent"
+            >
+              Cargos
+              <CaretDownIcon
+                size={20}
+                className={`transition-transform duration-300 ${open ? "rotate-180" : "rotate-0"}`}
+              />
+            </Button>
+          )}
+        >
+          <Button
+            as="button"
+            variant="transparent"
+            onClick={() => filters.onChangeRole("")}
+            className={`max-lg:active:bg-white max-lg:active:text-night lg:hover:bg-white lg:hover:text-night transition-all duration-300 w-full py-2 rounded-t-md text-sm`}
+          >
+            Limpar Filtro
+          </Button>
+          {roles?.map((role) => {
+            const active = role.name === filters.role;
+            const { styles } = getAnimationState(active);
+            return (
+              <Button
+                key={role.id_role}
+                as="button"
+                variant="transparent"
+                onClick={() => filters.onChangeRole(role.name)}
+                className={`max-lg:active:bg-white max-lg:active:text-night lg:hover:bg-white lg:hover:text-night transition-all duration-300 text-left w-full flex justify-between items-center gap-2 px-4 py-2 text-sm`}
+              >
+                {role.name}
+                <span>
+                  <CheckIcon
+                    size={20}
+                    className={`${styles.fadeInOpacity} ${styles.slideDown} transition-all duration-300`}
+                  />
+                </span>
+              </Button>
+            );
+          })}
+        </Dropdown>
       </div>
       <div className="w-full flex justify-center">
         <Dropdown
@@ -112,61 +161,6 @@ export function UserFilterSideBar(props: UserFilterSideBarProps) {
               inputMode="numeric"
             />
           </div>
-        </Dropdown>
-      </div>
-      <div className="w-full flex justify-center">
-        <Dropdown
-          backgroundActive="on"
-          alignment="middle"
-          trigger={(open) => (
-            <Button
-              className="max-lg:justify-self-center max-lg:active:bg-white max-lg:active:text-night max-lg:active:scale-95 duration-300 transition-all hover:bg-transparent fx-underline flex items-center"
-              as="button"
-              variant="transparent"
-            >
-              Tipo de Usuario
-              <CaretDownIcon
-                size={20}
-                className={`transition-transform duration-300 ${open ? "rotate-180" : "rotate-0"}`}
-              />
-            </Button>
-          )}
-        >
-          <Button
-            id=""
-            as="button"
-            variant="transparent"
-            onClick={() => filters.onChangeType("")}
-            className={`max-lg:active:bg-white max-lg:active:text-night lg:hover:bg-white lg:hover:text-night transition-all duration-300 text-left w-full flex justify-between items-center gap-2 px-4 py-2 text-sm`}
-          >
-            Limpar Filtro
-          </Button>
-          <Button
-            id="" as="button"
-            variant="transparent" onClick={() => filters.onChangeType("customer")}
-            className={`max-lg:active:bg-white max-lg:active:text-night lg:hover:bg-white lg:hover:text-night transition-all duration-300 text-left w-full flex justify-between items-center gap-2 px-4 py-2 text-sm`}
-          >
-            Cliente
-            <span>
-              <CheckIcon
-                size={20}
-                className={`${customerActive.fadeInOpacity} ${customerActive.slideDown} transition-all duration-300`}
-              />
-            </span>
-          </Button>
-          <Button
-            id="" as="button"
-            variant="transparent" onClick={() => filters.onChangeType("admin")}
-            className={`max-lg:active:bg-white max-lg:active:text-night lg:hover:bg-white lg:hover:text-night transition-all duration-300 text-left w-full flex justify-between items-center gap-2 px-4 py-2 text-sm`}
-          >
-            Administrador
-            <span>
-              <CheckIcon
-                size={20}
-                className={`${adminActive.fadeInOpacity} ${adminActive.slideDown} transition-all duration-300`}
-              />
-            </span>
-          </Button>
         </Dropdown>
       </div>
       <div className="w-full flex flex-col gap-2 justify-center">

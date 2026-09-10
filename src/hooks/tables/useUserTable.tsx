@@ -17,10 +17,8 @@ export function useUserTable(refetch: () => void){
         { name: 'Email', selector: (row: UserResponseDTO) => row.email },
         { name: 'Cpf', selector: (row: UserResponseDTO) => formatCPF(row.cpf) },
         {
-            name: 'Tipo',
-            selector: (row: UserResponseDTO) => (
-                row.type === "customer" ? 'Cliente': row.type === "admin" ? 'Admin' : ''
-            )
+            name: 'Cargos',
+            cell: (row: UserResponseDTO) => row.roles.join(', '),
         },
         {
             name: 'Ações',
