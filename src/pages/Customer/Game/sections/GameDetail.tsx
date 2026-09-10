@@ -23,7 +23,7 @@ export function GameDetail({id_game} : GameDetailProps){
 
     if (isLoading) {
         return (
-            <div className="w-full h-screen bg-gradient-to-b from-night-soft via-night-soft to-night flex items-center justify-center">
+            <div className="w-full h-screen bg-gradient-to-b from-base-soft via-base-soft to-base flex items-center justify-center">
                 <Spinner variant="primary" />
             </div>
         );

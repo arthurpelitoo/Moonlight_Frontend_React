@@ -2,8 +2,8 @@ import { CircleNotchIcon } from "@phosphor-icons/react";
 
 const variantClass = {
     primary: "text-white",
-    secondary: "text-night",
-    soft: "text-night-soft",
+    secondary: "text-base",
+    soft: "text-base-soft",
 };
 
 type SpinnerProps = {

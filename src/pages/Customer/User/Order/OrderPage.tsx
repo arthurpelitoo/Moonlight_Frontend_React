@@ -12,23 +12,23 @@ function OrderPage() {
 
     if (isLoading) {
         return (
-            <div className="w-full min-h-screen bg-gradient-to-b from-night-soft via-night-soft to-night flex items-center justify-center">
+            <div className="w-full min-h-screen bg-gradient-to-b from-base-soft via-base-soft to-base flex items-center justify-center">
                 <Spinner variant="primary" />
             </div>
         );
     }
-    
+
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-night-soft via-night-soft to-night flex flex-col items-center justify-center">
+    <main className="min-h-screen bg-gradient-to-b from-base-soft via-base-soft to-base flex flex-col items-center justify-center">
         <header className="mb-10 mt-26 w-fit bg-white/5 text-white rounded-xl p-4 border border-white/8 backdrop-blur-sm">
             <h1 className="text-2xl text-center px-10">Meus Pedidos</h1>
         </header>
 
         <div className="container justify-self-center mb-36">
-            <Table 
-                columns={OrderColumns} 
-                data={orders || []} 
+            <Table
+                columns={OrderColumns}
+                data={orders || []}
                 isLoading={isLoading}
                 expandableRows // Ativa o botão de (+)
                 expandableRowsComponent={ExpandedOrderItems} // Componente que criamos acima

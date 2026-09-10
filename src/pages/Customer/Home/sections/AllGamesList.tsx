@@ -31,7 +31,7 @@ export function AllGamesList(){
     }
 
     return(
-        <section className="pt-8 w-full bg-gradient-to-b from-night-soft ">
+        <section className="pt-8 w-full bg-gradient-to-b from-base-soft ">
             <div className="container justify-self-center w-full animate-fade-in p-6">
                 <div className="mb-5">
                     <h1 className="text-2xl">Todos os Jogos disponiveis no catálogo:</h1>
