@@ -2,13 +2,14 @@
 import { useFetchMyOrders } from "../../../../hooks/fetchItems/store/useFetchMyOrders";
 import { Spinner } from "../../../../components/common/Generic/Spinner";
 import { Table } from "../../../../components/common/Generic/Table/Table";
-import { OrderColumns } from "../../../../hooks/tables/customer/useOrderTable";
 import { ExpandedOrderItems } from "./sections/ExpandedOrderItems";
+import { useMyOrdersTable } from "../../../../hooks/tables/customer/useMyOrdersTable";
 
 
 
 function OrderPage() {
     const {orders, isLoading} = useFetchMyOrders();
+    const { OrderColumns } = useMyOrdersTable();
 
     if (isLoading) {
         return (
@@ -25,13 +26,13 @@ function OrderPage() {
             <h1 className="text-2xl text-center px-10">Meus Pedidos</h1>
         </header>
 
-        <div className="container justify-self-center mb-36">
+        <div className="container justify-self-center p-4">
             <Table
                 columns={OrderColumns}
                 data={orders || []}
                 isLoading={isLoading}
                 expandableRows // Ativa o botão de (+)
-                expandableRowsComponent={ExpandedOrderItems} // Componente que criamos acima
+                renderExpandedRow={(row) => <ExpandedOrderItems order={row}/>} // Componente que criamos acima
                 noDataComponent={
                     <p className="white-text text-center py-10">
                         Você não fez nenhuma compra até o momento.

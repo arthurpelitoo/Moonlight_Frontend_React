@@ -10,7 +10,7 @@ export function GameDashboardPage(){
               <h1 className="text-2xl text-center ">Tabela de Jogos</h1>
           </header>
 
-          <div className="container justify-self-center">
+          <div className="container justify-self-center p-4">
             <GameDataTable {...filters}/>
           </div>
       </main>

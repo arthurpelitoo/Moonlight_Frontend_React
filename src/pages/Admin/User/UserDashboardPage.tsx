@@ -10,7 +10,7 @@ export function UserDashboardPage() {
                 <h1 className="text-2xl text-center ">Tabela de Usuarios</h1>
             </header>
 
-            <div className="container justify-self-center">
+            <div className="container justify-self-center p-4">
               <UserDataTable {...filters}/>
             </div>
         </main>

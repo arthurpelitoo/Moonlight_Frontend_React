@@ -1,14 +1,28 @@
 import { ArrowLeftIcon } from "@phosphor-icons/react";
 import { Card, CardHeader } from "../../../components/common/Generic/Card";
 import { Button } from "../../../components/common/Generic/Button/Button";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { UserForm } from "./sections/UserForm";
 import type { UserResponseDTO } from "../../../@types/user/user.dto";
+import { useFetchUser } from "../../../hooks/fetchItems/fetchOne/useFetchUser";
 
 
 export function UserEditPage() {
+    const { id_user } = useParams();
     const { state } = useLocation();
-    const user: UserResponseDTO = state.user;
+
+    function handleUser() : UserResponseDTO | undefined {
+      const userFromState: UserResponseDTO | null = state != null ? state.user : null;
+
+      const { user: userFromApi } = useFetchUser(Number(id_user), {
+        enabled: state == null
+      });
+
+      return userFromState ?? userFromApi;
+    }
+
+    const user = handleUser();
+    if(!user) return;
 
     return(
         <main className="pt-10 min-h-screen bg-gradient-to-b from-base-soft via-base-soft to-base">
