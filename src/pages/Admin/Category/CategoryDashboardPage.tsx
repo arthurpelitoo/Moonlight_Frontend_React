@@ -9,7 +9,7 @@ export function CategoryDashboardPage(){
                 <h1 className="text-2xl text-center ">Tabela de Categorias</h1>
             </header>
 
-            <div className="container justify-self-center">
+            <div className="container justify-self-center p-4">
               <CategoryDataTable/>
             </div>
         </main>

@@ -3,16 +3,23 @@ import type { CategoryResponseDTO } from "../../../@types/category/category.dto"
 import { fetchCategoryById } from "../../../services/realServices/category.service";
 import toast from "react-hot-toast";
 
-export function useFetchCategory(id_category: number){
+type UseFetchCategoryOptions = {
+  enabled?: boolean;
+};
+
+export function useFetchCategory(id_category: number, options: UseFetchCategoryOptions = {}){
+    const { enabled = true } = options;
     const [category, setCategory] = useState<CategoryResponseDTO>();
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(enabled);
 
     useEffect(() => {
+        if (!enabled) return;
+
         fetchCategoryById(id_category)
         .then(response => {
             setCategory(response);
         }).catch(() =>
-            toast.error("Não foi possivel encontrar o jogo ou ele não existe.")
+            toast.error("Não foi possivel encontrar a categoria ou ele não existe.")
         ).finally(() =>
             setIsLoading(false)
         );
