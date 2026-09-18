@@ -1,4 +1,3 @@
-// services/realServices/upload.service.ts
 import { api } from "../api";
 
 type UploadContext = 'games' | 'categories' | 'studios';
