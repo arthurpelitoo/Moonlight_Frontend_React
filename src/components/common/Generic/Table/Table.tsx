@@ -1,9 +1,7 @@
 import { Fragment, useState } from "react";
 import { Spinner } from "../Spinner";
-import { tableStyles } from "./TableStyles";
 import { paginationOptions } from "./TraducaoTabela";
-import { flexRender, useTable, type ColumnDef, type PaginationState, type TableFeatures } from "@tanstack/react-table";
-import { getCoreRowModel, getExpandedRowModel } from "@tanstack/react-table/legacy";
+import { flexRender, useTable, type ColumnDef, type PaginationState} from "@tanstack/react-table";
 import { appTableFeatures } from "../../../../utils/tableFeatures";
 import { Button } from "../Button/Button";
 
@@ -18,27 +16,24 @@ type TableProps<TRowData extends Record<string, any>> = {
   columns: ColumnDef<typeof appTableFeatures, TRowData>[];
   data: TRowData[];
   isLoading: boolean;
-  subHeader?: boolean
+  subHeader?: boolean;
   subHeaderComponent?: React.ReactNode;
   noDataComponent?: React.ReactNode;
 
   // paginação server-side
   totalRows?: number;
+  currentPage?: number;
   onPageChange?: (page: number) => void;
   pageSize?: number;
 
-  //linhas expansíveis
+  // linhas expansíveis
   expandableRows?: boolean;
   renderExpandedRow?: (row: TRowData) => React.ReactNode;
 }
 
 export function Table<TRowData extends Record<string, any>>(props: TableProps<TRowData>) {
-  const { columns, data, isLoading, totalRows, onPageChange, pageSize = 5, ...rest } = props;
+  const { columns, data, isLoading, totalRows, currentPage = 1, onPageChange, pageSize = 5, ...rest } = props;
 
-  const [pagination, setPagination] = useState<PaginationState>({
-    pageIndex: 0,
-    pageSize,
-  });
 
   const [expanded, setExpanded] = useState({});
 
@@ -48,10 +43,17 @@ export function Table<TRowData extends Record<string, any>>(props: TableProps<TR
     features: appTableFeatures,
     data,
     columns,
-    state: { pagination, expanded },
+    state: {
+      pagination: {
+        pageIndex: currentPage - 1,
+        pageSize,
+      },
+      expanded
+    },
     onPaginationChange: (updater) => {
-      const next: PaginationState = typeof updater === "function" ? updater(pagination) : updater;
-      setPagination(next);
+      const next: PaginationState = typeof updater === "function"
+        ? updater({ pageIndex: currentPage - 1, pageSize })
+        : updater;
       onPageChange?.(next.pageIndex + 1);
     },
     onExpandedChange: setExpanded,
@@ -146,7 +148,7 @@ export function Table<TRowData extends Record<string, any>>(props: TableProps<TR
             ‹
           </Button>
           <span className="text-xs text-white/70">
-            {pagination.pageIndex + 1} {paginationOptions.rangeSeparatorText} {table.getPageCount()}
+            {table.state.pagination.pageIndex + 1} {paginationOptions.rangeSeparatorText} {table.getPageCount()}
           </span>
           <Button
             disabled={!table.getCanNextPage()}
@@ -159,23 +161,4 @@ export function Table<TRowData extends Record<string, any>>(props: TableProps<TR
       )}
     </div>
   )
-    // return(
-    //     <DataTable
-    //         columns={columns}
-    //         data={data}
-    //         progressPending={isLoading}
-    //         progressComponent={<Spinner />}
-    //         noDataComponent={<p className="text-white/50 py-6">Nenhum registro encontrado</p>}
-    //         customStyles={tableStyles}
-    //         highlightOnHover
-    //         pagination
-    //         paginationComponentOptions={paginationOptions}
-    //         paginationPerPage={5}
-    //         paginationRowsPerPageOptions={[5]}
-    //         paginationServer={totalRows !== undefined}         // ativa server-side se passar totalRows
-    //         paginationTotalRows={totalRows}
-    //         onChangePage={(page) => onPageChange?.(page)}
-    //         {...rest}
-    //     />
-    // )
 }

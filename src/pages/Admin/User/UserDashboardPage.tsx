@@ -1,8 +1,6 @@
 import { UserDataTable } from "./sections/UserDataTable";
-import { useUserFilters } from "../../../hooks/filters/admin/useUserFilters";
 
 export function UserDashboardPage() {
-    const { filters } = useUserFilters();
 
     return(
         <main className="pt-10 min-h-screen bg-gradient-to-b from-base-soft via-base-soft to-base">
@@ -11,7 +9,7 @@ export function UserDashboardPage() {
             </header>
 
             <div className="container justify-self-center p-4">
-              <UserDataTable {...filters}/>
+              <UserDataTable/>
             </div>
         </main>
     )

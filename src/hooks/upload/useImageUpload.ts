@@ -36,7 +36,7 @@ export function useImageUpload(resource: ResourceType, onUploaded: (url: string)
     const isFileValid = validateFile(file);
     if (!isFileValid) return;
 
-    setPreviewUrl(URL.createObjectURL(file!)); // preview instantâneo, local, antes mesmo do upload terminar
+    setPreviewUrl(URL.createObjectURL(file!)); // preview local
     setUploading(true);
 
     try {

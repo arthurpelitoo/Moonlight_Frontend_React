@@ -1,8 +1,6 @@
-import { useGameFilters } from "../../../hooks/filters/admin/useGameFilters";
 import { GameDataTable } from "./sections/GameDataTable";
 
 export function GameDashboardPage(){
-  const { filters } = useGameFilters();
 
   return(
       <main className="pt-10 min-h-screen bg-gradient-to-b from-base-soft via-base-soft to-base">
@@ -11,7 +9,7 @@ export function GameDashboardPage(){
           </header>
 
           <div className="container justify-self-center p-4">
-            <GameDataTable {...filters}/>
+            <GameDataTable />
           </div>
       </main>
   )
