@@ -105,7 +105,7 @@ export function GameForm({mode, game} : GameFormProps){
                   <InputFieldForm
                       id="game-image" label="URL da Imagem do Card" type="file"
                       accept="image/*"
-                      onChange={cardUpload.handleFileChange}
+                      onChange={cardUpload.handleFileUpload}
                       disabled={cardUpload.uploading}
                       placeholder="https://shared.akamai.steamstatic.com//store_item_assets//steam//apps//1245620//hero_capsule.jpg?t=1767883716"
                       maxLength={255}
@@ -129,7 +129,7 @@ export function GameForm({mode, game} : GameFormProps){
                 <InputFieldForm
                     id="game-banner" label="URL da Imagem do Banner" type="file"
                     accept="image/*"
-                    onChange={bannerUpload.handleFileChange}
+                    onChange={bannerUpload.handleFileUpload}
                     disabled={bannerUpload.uploading}
                     placeholder="https://cdn.akamai.steamstatic.com/steam/apps/1245620/library_hero.jpg"
                     maxLength={255}

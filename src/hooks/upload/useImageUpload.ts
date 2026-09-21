@@ -31,7 +31,7 @@ export function useImageUpload(resource: ResourceType, onUploaded: (url: string)
     return true;
   }
 
-  async function handleFileChange(event: React.ChangeEvent<HTMLInputElement>): Promise<void>{
+  async function handleFileUpload(event: React.ChangeEvent<HTMLInputElement>): Promise<void>{
     const file = event.target.files?.[0];
     const isFileValid = validateFile(file);
     if (!isFileValid) return;
@@ -50,5 +50,5 @@ export function useImageUpload(resource: ResourceType, onUploaded: (url: string)
     }
   };
 
-  return { handleFileChange, uploading, previewUrl };
+  return { handleFileUpload, uploading, previewUrl };
 }
