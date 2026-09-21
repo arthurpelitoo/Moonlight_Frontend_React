@@ -25,7 +25,7 @@ export function CategoryForm({mode, category} : CategoryFormProps){
         image: category.image ?? ""
     } : undefined);
 
-    const { handleFileChange, uploading, previewUrl } = useImageUpload('category', setField("image"));
+    const { handleFileUpload, uploading, previewUrl } = useImageUpload('category', setField("image"));
 
     // Tela de sucesso
     if (ui.submitted && !ui.apiError && ui.success) {
@@ -69,7 +69,7 @@ export function CategoryForm({mode, category} : CategoryFormProps){
                 <InputFieldForm
                     id="category-image" label="Imagem do Card" type="file"
                     accept="image/*"
-                    onChange={handleFileChange}
+                    onChange={handleFileUpload}
                     disabled={uploading}
                     placeholder="Insira arquivos JPEG, PNG, GIF, AVIF e WebP"
                     maxLength={255}
