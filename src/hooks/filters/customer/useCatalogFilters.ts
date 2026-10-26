@@ -1,4 +1,4 @@
-import { useUpdateUrlParam } from "../updateUrlParam/useUpdateUrlParam";
+import { useUpdateUrlParam } from "../../updateUrlParam/useUpdateUrlParam";
 
 /**
  * hook para usar e centralizar filtros de catalogo da loja sem maiores problemas.
