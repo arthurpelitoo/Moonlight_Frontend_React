@@ -5,6 +5,5 @@ export type AuthUserResponseDTO = {
     name: string,
     email: string,
     cpf: string,
-    // type: 'customer' | 'admin';
     roles: RoleName[];
 }; // autenticação no useAuth (ao fazer login, não precisa pegar password e created_at pra guardar no localstorage);
