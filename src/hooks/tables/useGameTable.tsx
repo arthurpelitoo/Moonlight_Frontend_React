@@ -49,10 +49,10 @@ export function useGameTable(refetch: () => void){
         header: "Ações",
         cell: (info) => (
           <>
-            <Button id={`cat-edit-btn-${info.row.index}`} variant="transparent" onClick={() => handleEdit(info.row.original)}>
+            <Button id={`game-edit-btn-${info.row.index}`} variant="transparent" onClick={() => handleEdit(info.row.original)}>
               <PencilIcon size={32} />
             </Button>
-            <Button id={`cat-delete-btn-${info.row.index}`} variant="transparent" onClick={() => setConfirmDeleteId(info.row.original.id_game!)}>
+            <Button id={`game-delete-btn-${info.row.index}`} variant="transparent" onClick={() => setConfirmDeleteId(info.row.original.id_game!)}>
                 <TrashIcon size={32} />
             </Button>
           </>
